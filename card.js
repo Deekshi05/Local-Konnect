@@ -1,7 +1,7 @@
 import React from 'react';
-import './new_tender_card.css';
+import './card.css';
 
-function BidCard() {
+function Card() {
   return (
     <div className="bid-card">
       {/* Card Header */}
@@ -60,11 +60,27 @@ function BidCard() {
       <div className="card-footer">
         <div className="details">
           <p>Max Days Limit: <span>30</span> days</p>
-          <p>Your Limit: <span>15</span> days</p>
-          <p>Extra Benefits List</p>
-          <p>User Address</p>
+          <div className="extra-benefits">
+            <label>Your Limit:</label>
+            <input
+              type="text"
+              className="extra-benefits-input"
+              placeholder="Enter number of days required"
+            />
+          </div>
+          {/* <p>Your Limit: <span>15</span> days</p> */}
+          <div className="extra-benefits">
+            <label>Extra Benefits List:</label>
+            <input
+              type="text"
+              className="extra-benefits-input"
+              placeholder="Enter extra benefits"
+            />
+          </div>
+          <p>User Address: <span>Hyderabad, TG</span></p>
         </div>
         <div className="time-left">
+            <p>Time Left</p>
           <div className="time-circle">
             <span>14:36</span>
             <small>min</small>
@@ -82,4 +98,4 @@ function BidCard() {
   );
 }
 
-export default BidCard;
+export default Card;
