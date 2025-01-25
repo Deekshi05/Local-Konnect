@@ -91,7 +91,10 @@ function Card() {
       {/* Total Section */}
       <div className="card-total">
         <hr />
-        <p>Total Bid Value: <span>₹ 10,000 /-</span></p>
+        <div className="card-total-inside">
+          <div className="card-total-inside-p"><p>Total Bid Value: <span>₹ 10,000 /-</span></p></div>
+          <div className="card-total-inside-b"><button className="finish-button">Finish</button></div>
+        </div>
         <hr />
       </div>
     </div>

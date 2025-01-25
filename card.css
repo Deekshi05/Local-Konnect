@@ -14,14 +14,14 @@
   /* Header Styling */
   .card-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     background-color: white;
     color: #4a90e2;
     padding: 15px 20px;
     font-weight: bold;
     border-bottom: 2px solid #e5e5e5;
   }
-  
+
   .user-id span,
   .service-name span {
     font-weight: normal;
@@ -30,6 +30,14 @@
     font-weight: bold;
     padding: 5px;
     padding-top: 10px;
+  }
+
+  .user-id {
+    padding-right: 10px;
+  }
+
+  .service-name {
+    padding-left: 30px;
   }
   
   .user-id strong,
@@ -114,7 +122,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 50px;
+    margin-right: 85px;
   }
   
   .time-left p {
@@ -135,7 +143,7 @@
   }
   
   .time-circle span {
-    font-size: 18px;
+    font-size: 16px;
   }
   
   .time-circle small {
@@ -145,7 +153,7 @@
   /* Total Section */
   .card-total {
     text-align: center;
-    padding: 15px;
+    /* padding: 15px; */
     font-size: 16px;
     background-color: white;
     color: #4a4a4a;
@@ -154,9 +162,40 @@
   .card-total span {
     font-weight: bold;
     color: #e74c3c;
+    padding-right: 80px;
   }
   
   hr {
     border: 1px solid #e5e5e5;
   }
   
+  .card-total-inside {
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+  }
+
+  .finish-button {
+    background-color: white;
+    color: rgb(17, 14, 195);
+    border-radius: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-color: rgb(17, 14, 195);
+    margin-left: 90px;
+    box-shadow: none;
+  }
+
+  .card-total-inside-p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 0px;
+    padding-top: 10px;
+  }
+
+  .card-total-inside-b {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+  }
