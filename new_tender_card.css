@@ -1,0 +1,169 @@
+/* General Styling */
+.bid-card-1 {
+  width: 100%;
+  max-width: 600px;
+  margin: 10px auto;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  padding: 0;
+}
+
+/* Header Styling */
+.card-header-1 {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  color: #4a90e2;
+  padding: 15px 20px;
+  font-weight: bold;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.user-id-1 span,
+.service-name-1 span {
+  font-weight: normal;
+  margin-right: 5px;
+  color: #1123eb;
+  font-weight: bold;
+  padding: 5px;
+  padding-top: 10px;
+}
+
+.user-id-1 {
+  padding-right: 10px;
+}
+
+.service-name-1 {
+  padding-left: 30px;
+}
+  
+.user-id-1 strong,
+.service-name-1 strong {
+  font-weight: bold;
+  padding: 5px;
+  padding-top: 10px;
+  color: black;
+}
+/* Table Section */
+.card-table-1 {
+  background-color: #f7f7f7;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.card-table-1 table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.card-table-1 th,
+.card-table-1 td {
+  padding: 10px 15px;
+  text-align: left;
+  border: 1px solid #dddddd;
+}
+
+.card-table-1 th {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+}
+
+.editable-input-1 {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Footer Section */
+.card-footer-1 {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.details-1 {
+  margin-left: 10px;
+}
+
+.details-1 p {
+  margin: 5px 0;
+  color: #333333;
+  font-size: 14px;
+}
+
+.details-1 span {
+  font-weight: bold;
+}
+
+.extra-benefits-1 {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between label and input */
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.extra-benefits-input-1 {
+  flex-grow: 1;
+  padding: 3px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.time-left-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.time-left-1 p {
+  padding-top: 5px;
+}
+
+.time-circle-1 {
+  width: 60px;
+  height: 60px;
+  background-color: #4a90e2;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.time-circle-1 span {
+  font-size: 18px;
+}
+
+.time-circle-1 small {
+  font-size: 14px;
+}
+
+/* Total Section */
+.card-total-1 {
+  text-align: center;
+  /* padding: 15px; */
+  font-size: 16px;
+  background-color: white;
+  color: #4a4a4a;
+}
+
+.card-total-1 span {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+hr {
+  border: 1px solid #e5e5e5;
+}
