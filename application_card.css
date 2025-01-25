@@ -1,8 +1,8 @@
 /* General Styling */
-.bid-card {
+.bid-card-1 {
     width: 100%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 10px auto;
     background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -12,18 +12,18 @@
   }
   
   /* Header Styling */
-  .card-header {
+  .card-header-1 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     background-color: white;
     color: #4a90e2;
     padding: 15px 20px;
     font-weight: bold;
     border-bottom: 2px solid #e5e5e5;
   }
-
-  .user-id span,
-  .service-name span {
+  
+  .user-id-1 span,
+  .service-name-1 span {
     font-weight: normal;
     margin-right: 5px;
     color: #1123eb;
@@ -31,48 +31,48 @@
     padding: 5px;
     padding-top: 10px;
   }
-
-  .user-id {
+  
+  .user-id-1 {
     padding-right: 10px;
   }
-
-  .service-name {
+  
+  .service-name-1 {
     padding-left: 30px;
   }
-  
-  .user-id strong,
-  .service-name strong {
+    
+  .user-id-1 strong,
+  .service-name-1 strong {
     font-weight: bold;
     padding: 5px;
     padding-top: 10px;
+    color: black;
   }
-  
   /* Table Section */
-  .card-table {
+  .card-table-1 {
     background-color: #f7f7f7;
     padding: 0;
     margin-bottom: 10px;
   }
   
-  .card-table table {
+  .card-table-1 table{
     width: 100%;
     border-collapse: collapse;
   }
   
-  .card-table th,
-  .card-table td {
+  .card-table-1 th,
+  .card-table-1 td {
     padding: 10px 15px;
     text-align: left;
     border: 1px solid #dddddd;
   }
   
-  .card-table th {
+  .card-table-1 th {
     background-color: #4a90e2;
     color: white;
     font-weight: bold;
   }
   
-  .editable-input {
+  .editable-input-1 {
     width: 100%;
     padding: 5px;
     border: 1px solid #cccccc;
@@ -81,28 +81,28 @@
   }
   
   /* Footer Section */
-  .card-footer {
+  .card-footer-1 {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     background-color: #f9f9f9;
   }
-
-  .details {
+  
+  .details-1 {
     margin-left: 10px;
   }
   
-  .details p {
+  .details-1 p {
     margin: 5px 0;
     color: #333333;
     font-size: 14px;
   }
   
-  .details span {
+  .details-1 span {
     font-weight: bold;
   }
   
-  .extra-benefits {
+  .extra-benefits-1 {
     display: flex;
     align-items: center;
     gap: 10px; /* Space between label and input */
@@ -110,7 +110,7 @@
     font-size: 14px;
   }
   
-  .extra-benefits-input {
+  .extra-benefits-input-1 {
     flex-grow: 1;
     padding: 3px;
     border: 1px solid #cccccc;
@@ -118,18 +118,18 @@
     box-sizing: border-box;
   }
   
-  .time-left {
+  .time-left-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 85px;
+    margin-right: 50px;
   }
   
-  .time-left p {
+  .time-left-1 p {
     padding-top: 5px;
   }
-
-  .time-circle {
+  
+  .time-circle-1 {
     width: 60px;
     height: 60px;
     background-color: #4a90e2;
@@ -142,16 +142,16 @@
     font-weight: bold;
   }
   
-  .time-circle span {
-    font-size: 16px;
+  .time-circle-1 span {
+    font-size: 18px;
   }
   
-  .time-circle small {
-    font-size: 12px;
+  .time-circle-1 small {
+    font-size: 14px;
   }
   
   /* Total Section */
-  .card-total {
+  .card-total-1 {
     text-align: center;
     /* padding: 15px; */
     font-size: 16px;
@@ -159,7 +159,7 @@
     color: #4a4a4a;
   }
   
-  .card-total span {
+  .card-total-1 span {
     font-weight: bold;
     color: #e74c3c;
     padding-right: 80px;
@@ -169,13 +169,13 @@
     border: 1px solid #e5e5e5;
   }
   
-  .card-total-inside {
+  .card-total-inside-1 {
     display: flex;
     justify-content: center;
     padding: 0px;
   }
 
-  .finish-button {
+  .finish-button-1 {
     background-color: white;
     color: rgb(17, 14, 195);
     border-radius: 30px;
@@ -186,7 +186,7 @@
     box-shadow: none;
   }
 
-  .card-total-inside-p {
+  .card-total-inside-p-1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -194,7 +194,7 @@
     padding-top: 10px;
   }
 
-  .card-total-inside-b {
+  .card-total-inside-b-1 {
     display: flex;
     flex-direction: row;
     justify-content: right;
