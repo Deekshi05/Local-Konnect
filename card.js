@@ -1,7 +1,7 @@
 import React from 'react';
 import './card.css';
 
-function Card() {
+function NCard() {
   return (
     <div className="bid-card">
       {/* Card Header */}
@@ -101,4 +101,4 @@ function Card() {
   );
 }
 
-export default Card;
+export default NCard;
