@@ -26,13 +26,8 @@ function MainBody() {
           <nav>
             <ul>
               <li class="dash">Dashboard</li>
-              {/* <li>Item Category</li> */}
               <li>
                 <Collapsible trigger="Services">
-                  {/* <p>
-                    This is the collapsible content. It can be any element or
-                    React component you like.
-                  </p> */}
                   <br></br>
                   <a href="Link Here"> Add Services</a>
                   <br></br>
@@ -41,10 +36,6 @@ function MainBody() {
               </li>
               <li>
                 <Collapsible trigger="Items">
-                  {/* <p>
-                    This is the collapsible content. It can be any element or
-                    React component you like.
-                  </p> */}
                   <br></br>
                   <a href="Link Here"> Add Items</a>
                   <br></br>
@@ -53,10 +44,6 @@ function MainBody() {
               </li>
               <li>
                 <Collapsible trigger="Contracters">
-                  {/* <p>
-                    This is the collapsible content. It can be any element or
-                    React component you like.
-                  </p> */}
                   <br></br>
                   <a href="Link Here"> Add Contracters</a>
                   <br></br>
@@ -65,12 +52,6 @@ function MainBody() {
               </li>
               <li>
                 <Collapsible trigger="Orders">
-                  {/* <p>
-                    This is the collapsible content. It can be any element or
-                    React component you like.
-                  </p> */}
-                  {/* <br></br>
-                  <a href="Link Here">All Orders</a> */}
                   <br></br>
                   <a href="Link Here">Pending Oders</a>
                   <br></br>
@@ -81,10 +62,6 @@ function MainBody() {
               </li>
               <li>
                 <Collapsible trigger="Tenders">
-                  {/* <p>
-                    This is the collapsible content. It can be any element or
-                    React component you like.
-                  </p> */}
                   <br></br>
                   <a href="Link Here"> New Tenders</a>
                   <br></br>
@@ -99,10 +76,6 @@ function MainBody() {
               </li>
               <li>
                 <Collapsible trigger="Supervisors">
-                  {/* <p>
-                    This is the collapsible content. It can be any element or
-                    React component you like.
-                  </p> */}
                   <br></br>
                   <a href="Link Here"> Add Supervisors</a>
                   <br></br>
