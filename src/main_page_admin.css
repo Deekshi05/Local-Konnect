@@ -32,12 +32,13 @@ code {
 }
 
 .sidebar {
-    width: 250px;
+    width: 333px;
     background-color: white;
     color: #333;
     padding: 20px;
     border-right: 1px solid #ddd;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    height: max-content;
     /* Shadow for the sidebar */
 }
 
@@ -245,4 +246,8 @@ a {
 
 .cyan {
     background-color: #17a2b8;
+}
+
+li a {
+    padding: 20%;
 }
