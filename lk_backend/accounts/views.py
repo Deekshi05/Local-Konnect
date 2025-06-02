@@ -1,4 +1,6 @@
 # views.py
+from django.http import HttpResponse
+from django.template import loader
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -45,3 +47,8 @@ class UserProfileView(APIView):
     def get(self, request):
         serializer = UserProfileSerializer(request.user)
         return Response(serializer.data)
+
+
+def home(request):
+    template = loader.get_template('Error404.html')
+    return HttpResponse(template.render())

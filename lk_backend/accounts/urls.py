@@ -4,7 +4,8 @@ from .views import (
     ContractorRegistrationView,
     SupervisorRegistrationView,
     CustomTokenObtainPairView,
-    UserProfileView
+    UserProfileView,
+    home
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path('register/supervisor/', SupervisorRegistrationView.as_view(), name='supervisor-register'),
     path('login/', CustomTokenObtainPairView.as_view(), name='token-obtain-pair'),
     path('profile/', UserProfileView.as_view(), name='user-profile'),
+    path('',home,name='home'),
 ]
