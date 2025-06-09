@@ -1,0 +1,175 @@
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f4f6;
+  }
+  
+  
+  .home-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: linear-gradient(to right, #043462, #437996); 
+    /* background: linear-gradient(to right, #003f6b, #5a8bb0, #8fbcd4); */
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  /* Sidebar Logo & Title */
+  .sidebar .logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar .logo-section img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+  
+  .sidebar .logo-section h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Sidebar Nav Buttons */
+  .sidebar button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    width: 100%;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding-left: 10px;
+  }
+  
+  /* Main Content Area */
+  .main-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    border-bottom: 3px solid #1e3a8a;
+    padding-bottom: 4px;
+  }
+  
+  /* Logout Button */
+  .logout-button {
+    background: linear-gradient(to right, #0f3c66, #4d88a8);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100px;
+  }
+  
+  .logout-button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  /* Services Section */
+  .services-section {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  
+  /* Service Card */
+  .service-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
+    width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .card-info {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Clients Section */
+  .clients-board {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  .crm-column {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    width: 200px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .crm-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .crm-column h4 {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .client-card {
+    background-color: #e5e7eb;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+  }
+  
