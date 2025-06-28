@@ -1,0 +1,96 @@
+.make-tender-container {
+    max-width: 600px;
+    margin: 5px auto;
+    padding: 12px;
+    background-color: rgb(251, 251, 243);
+    border: 2px solid rgb(86, 44, 32);
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(86, 44, 32, 0.15);
+    color: rgb(86, 44, 32);
+    font-family: Arial, sans-serif;
+    font-size: 0.9em;
+}
+
+.make-tender-container h1, .make-tender-container h2, .make-tender-container h3 {
+    color: rgb(86, 44, 32);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 1.2em;
+}
+
+label {
+    display: block;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    color: rgb(86, 44, 32);
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.input-field, select {
+    width: 100%;
+    padding: 5px 10px;
+    border: 2px solid rgb(86, 44, 32);
+    border-radius: 5px;
+    background-color: rgb(251, 251, 243);
+    color: rgb(86, 44, 32);
+    font-size: 0.9em;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 12px;
+    font-size: 0.85em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 4px 3px 8px 0;
+}
+
+.selected-contractors,
+.contractor-list,
+.requirements-container,
+.requirement-card {
+    font-size: 0.9em;
+}
+
+.requirement-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    background-color: rgb(251, 251, 243);
+    border: 2px solid rgb(86, 44, 32);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+.requirement-card .input-field,
+.requirement-card select {
+    flex: 1 1 150px;
+    min-width: 120px;
+    margin-bottom: 0;
+}
+
+.delete-btn {
+    padding: 6px;
+    font-size: 0.85em;
+}
+
+button.add-btn {
+    padding: 7px 12px;
+    font-size: 0.85em;
+    margin-bottom: 10px;
+}
+
+.contractor-select {
+    padding: 7px;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
