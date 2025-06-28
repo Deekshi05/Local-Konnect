@@ -1,0 +1,43 @@
+.partners{
+    padding:10px;
+    background-color: rgb(251, 251, 243);
+}
+.partners-container {
+    text-align: center; /* Center-align all text */
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    background-color: #d8edf4;
+    margin-left:6vw;
+    margin-right:6vw;
+    border-radius:5px;
+}
+
+/* H1 styling */
+.partners-container h1 {
+    font-size: 1.5rem;
+    color: rgb(86, 44, 32);
+    margin-bottom:2vw; /* Space below the heading */
+}
+
+/* Flexbox for H3 elements */
+.partners-list {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    gap: 10vw; /* Add space between the items */
+    flex-wrap: wrap; /* Wrap to the next line on smaller screens */
+    margin-top: 2vw;
+}
+
+/* H3 styling */
+.partners-list h3 {
+    font-size: 1.0rem;
+   color: rgb(86, 44, 32);
+    margin: 0;
+}
+
+/* Hover effect for H3 elements */
+.partners-list h3:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    cursor: pointer; /* Pointer cursor on hover */
+}

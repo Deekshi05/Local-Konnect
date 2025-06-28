@@ -1,0 +1,16 @@
+/* Parent container for Sidebar and ProductGrid */
+.filter-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  background: rgb(251, 251, 243); /* Light cream */
+  min-height: 100vh;
+}
+/* Product Grid Styling */
+.contractor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: 20px;
+  flex-grow: 1;
+}
