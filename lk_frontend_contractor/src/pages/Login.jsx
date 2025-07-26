@@ -40,7 +40,7 @@ function Login() {
             localStorage.setItem(REFRESH_TOKEN, data.refresh);
 
             console.log("Login successful!");
-            navigate("/home");
+            navigate("/Home");
         } catch (error) {
             console.log("Error Response:", error.response?.data || error.message);
             alert("Invalid email or password");

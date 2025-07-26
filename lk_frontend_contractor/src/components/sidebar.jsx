@@ -6,16 +6,32 @@ function Sidebar() {
 
     const navigate = useNavigate();
 
+    const homeClick = () => {
+        navigate("/Home");
+    }
+
     const newTendersClick = () => {
-        navigate("/new_tender_card");
+        navigate("/newTendersContractor");
+    }
+
+    const appliedClick = () => {
+        navigate("/appliedTendersContractor");
     }
 
     const profileClick = () => {
         navigate("/contractorProfile");
     }
 
-    const allowedClick = () => {
-        navigate("/allowedTenders");
+    const allottedClick = () => {
+        navigate("/allottedTendersContractor");
+    }
+
+    const completedClick = () => {
+        navigate("/completedTendersContractor");
+    }
+
+    const ongoingClick = () => {
+        navigate("/ongoingTendersContractor");
     }
 
     return(
@@ -23,12 +39,12 @@ function Sidebar() {
             <div className="logo-section">
                 <h2>LocalKonnect</h2>
             </div>
-            <button>Dashboard</button>
+            <button onClick={homeClick}>Dashboard</button>
             <button onClick={newTendersClick}>New Tenders</button>
-            <button>Applied Tenders</button>
-            <button>Ongoing Tenders</button>
-            <button>Completed Tenders</button>
-            <button onClick={allowedClick}>Allowed Tenders</button>
+            <button onClick={appliedClick}>Applied Tenders</button>
+            <button onClick={allottedClick}>Upcoming Tenders</button>
+            <button onClick={ongoingClick}>Ongoing Tenders</button>
+            <button onClick={completedClick}>Completed Tenders</button>
             <button onClick={profileClick}>My Profile</button>
         </div>
     );
