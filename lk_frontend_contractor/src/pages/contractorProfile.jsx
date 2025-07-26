@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/contractorProfile.css';
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN } from '../constants';
 import api from '../api';
@@ -9,13 +8,13 @@ const ContractorProfile = () => {
 
   const navigate = useNavigate();
 
-  const [availability, setAvailability] = useState(true);
+  // const [availability, setAvailability] = useState(true);
   const [contractor, setContractor] = useState({
     first_name: '',
     last_name: '',
     email: '',
     phone_number: '',
-    profile_data:{
+    profile_data: {
       address: '',
       city: '',
       state: '',
@@ -34,9 +33,9 @@ const ContractorProfile = () => {
       try {
         const token = localStorage.getItem(ACCESS_TOKEN);
         const res = await api.get("api/profile/", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
         const data = (res.data);
 
@@ -54,7 +53,7 @@ const ContractorProfile = () => {
           },
         });
 
-        setAvailability(data.availability);
+        // setAvailability(data.availability);
       } catch (error) {
         console.error('Error fetching contractor data:', error);
       }
@@ -78,7 +77,7 @@ const ContractorProfile = () => {
 
       <h2>Profile</h2>
 
-      <div className="form-group availability-row">
+      {/* <div className="form-group availability-row">
         <span className="availability-label">My Availability</span>
         <label className="switch">
           <input
@@ -88,7 +87,7 @@ const ContractorProfile = () => {
           />
           <span className="slider"></span>
         </label>
-      </div>
+      </div> */}
 
       <div className="form-group">
         <label>First Name</label>
@@ -107,7 +106,7 @@ const ContractorProfile = () => {
 
       <div className="form-group">
         <label>Phone Number</label>
-        <input type="number" value={contractor.phone_number || ''} readOnly />
+        <input type="text" value={contractor.phone_number || ''} readOnly />
       </div>
 
       <div className="form-group">
@@ -134,7 +133,7 @@ const ContractorProfile = () => {
         <label>Rating</label>
         <input type="text" value={contractor.profile_data?.rating} readOnly />
       </div>
-{/* 
+      {/* 
       <div className="form-group">
         <label>Title</label>
         <select value={contractor.title} >
@@ -146,7 +145,7 @@ const ContractorProfile = () => {
       </div> */}
 
 
-      
+
     </div>
   );
 };

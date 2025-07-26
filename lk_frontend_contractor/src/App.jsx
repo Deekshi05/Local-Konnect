@@ -1,14 +1,18 @@
-import react from "react"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Login from "./pages/Login"
-import Register from "./pages/register"
+import Register from "./pages/Register"
+import ContractorRegister from "./pages/ContractorRegister"
 import NotFound from "./pages/NotFound"
 import Home from "./pages/Home"
 import ProtectedRoute from "./components/ProtectedRoute"
 import ACard from "./pages/new_tender_card"
 import ContractorProfile from "./pages/contractorProfile"
 import ForgotPassword from "./pages/Forgot"
-import AllowedTenders from "./pages/allowedTenders"
+import NewTenders from "./pages/newTendersContractor"
+import AppliedTenders from "./pages/appliedTendersContractor"
+import AllottedTenders from "./pages/allottedTendersContractor"
+import CompletedTenders from "./pages/completedTendersContractor"
+import OngoingTenders from "./pages/ongoingTendersContractor"
 import TenderBidForm from "./pages/tenderBidForm"
 
 function Logout() {
@@ -37,6 +41,47 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="/Forgot" element={<ForgotPassword />} />
+        <Route path="/ContractorRegister" element={<ContractorRegister/>}/>
+        <Route
+          path="/newTendersContractor"
+          element={
+            <ProtectedRoute>
+              <NewTenders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/appliedTendersContractor"
+          element={
+            <ProtectedRoute>
+              <AppliedTenders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/allottedTendersContractor"
+          element={
+            <ProtectedRoute>
+              <AllottedTenders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/completedTendersContractor"
+          element={
+            <ProtectedRoute>
+              <CompletedTenders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ongoingTendersContractor"
+          element={
+            <ProtectedRoute>
+              <OngoingTenders />
+            </ProtectedRoute>
+          }
+        />
         <Route 
           path="/new_tender_card"
           element={
@@ -50,14 +95,6 @@ function App() {
           element={
             <ProtectedRoute>
               <ContractorProfile />
-            </ProtectedRoute>
-          }
-        />
-        <Route 
-          path="/allowedTenders"
-          element={
-            <ProtectedRoute>
-              <AllowedTenders />
             </ProtectedRoute>
           }
         />

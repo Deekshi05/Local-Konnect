@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../api.js';
 import '../styles/register.css';
 
 export default function Register() {
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [first_name, setFirstName] = useState("");
@@ -56,14 +56,16 @@ export default function Register() {
 
         try {
             const res = fetch(url, options);
-            // const res = await api.post("http://localhost:8000/api/register/contractor/", userData, {
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            // });
+            if(res.ok) {
+                const data = await res.json();
+                console.log(data);
+            }
             alert("Contractor Registered Successfully.");
 
-            navigate("/Login");
+            navigate("/ContractorRegister", {
+                state: {email, password}
+            });
+            // navigate("/Login");
         } catch (error) {
             alert("Error during registration: " + error);
         }

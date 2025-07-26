@@ -19,7 +19,6 @@ body {
     flex-direction: column;
     align-items: flex-start;
     background: linear-gradient(to right, #043462, #437996); 
-    /* background: linear-gradient(to right, #003f6b, #5a8bb0, #8fbcd4); */
     color: white;
     transition: all 0.3s ease;
   }
