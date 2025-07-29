@@ -7,20 +7,24 @@ const useContractors = (serviceId) => {
 
   useEffect(() => {
     const fetchContractors = async () => {
+      // Start by setting loading to true
+      setLoading(true);
+
       if (!serviceId) {
         setContractors([]);
+        setLoading(false); // ✅ Must reset loading here too
         return;
       }
 
-      setLoading(true);
       try {
         const res = await api.get(`api/services/${serviceId}/contractors/`);
+        console.log("Fetched contractors:", res.data.contractors);
         setContractors(res.data.contractors || []);
       } catch (err) {
         console.error("Failed to fetch contractors", err);
-        setContractors([]);
+        setContractors([]); // Optional: clear list on failure
       } finally {
-        setLoading(false);
+        setLoading(false); // ✅ Always turn off loading
       }
     };
 

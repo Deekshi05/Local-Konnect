@@ -1,10 +1,10 @@
-// src/pages/Contractor.jsx
 import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import useContractors from "./useContractors";
-import ContractorCard from "./ContractorCard"; // fixed double-slash path
+import ContractorCard from "./ContractorCard";
 import api from "../../../api";
 import "./Contractors.css";
+
 const Contractors = () => {
   const [filter, setFilter] = useState({
     service: "",
@@ -17,6 +17,7 @@ const Contractors = () => {
   const [services, setServices] = useState([]);
   const [serviceId, setServiceId] = useState(null);
 
+  // Fetch all services
   useEffect(() => {
     const fetchServices = async () => {
       try {
@@ -29,6 +30,7 @@ const Contractors = () => {
     fetchServices();
   }, []);
 
+  // Update serviceId when service name is selected
   useEffect(() => {
     const selected = services.find((s) => s.name === filter.service);
     setServiceId(selected?.id || null);
@@ -36,28 +38,42 @@ const Contractors = () => {
 
   const { contractors, loading } = useContractors(serviceId);
 
-  const filteredContractors = (contractors || [])
-  .filter((c) =>
-    filter.region
-      ? (typeof c?.region === "string" && c.region.toLowerCase().includes(filter.region.toLowerCase()))
-      : true
-  )
-  .filter((c) =>
-    filter.rating.length > 0
-      ? filter.rating.some((r) => (c?.rating || 0) >= r)
-      : true
-  )
-  .filter((c) => (c?.experience || 0) <= filter.experience)
-  .sort((a, b) => {
-    if (filter.sort === "rating-desc") return (b?.rating || 0) - (a?.rating || 0);
-    if (filter.sort === "exp-desc") return (b?.experience || 0) - (a?.experience || 0);
-    return 0;
-  });
+  // Get unique list of states from contractors
+  const uniqueStates = [...new Set((contractors || []).map(c => c.state).filter(Boolean))];
 
+  // Apply filters
+  const filteredContractors = (contractors || [])
+    .filter((c) => {
+      return filter.region ? c.state === filter.region : true;
+    })
+    .filter((c) => {
+      const contractorRating = parseFloat(c?.rating) || 0;
+      return filter.rating.length > 0
+        ? contractorRating >= filter.rating[0]
+        : true;
+    })
+    .filter((c) => {
+      const experience = parseInt(c?.experience) || 0;
+      return experience <= filter.experience;
+    })
+    .sort((a, b) => {
+      if (filter.sort === "rating-desc") {
+        return (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0);
+      }
+      if (filter.sort === "exp-desc") {
+        return (parseInt(b.experience) || 0) - (parseInt(a.experience) || 0);
+      }
+      return 0;
+    });
 
   return (
     <div className="contractor-page">
-      <Sidebar updatefilters={setFilter} filter={filter} services={services} />
+      <Sidebar
+        updatefilters={setFilter}
+        filter={filter}
+        services={services}
+        cities={uniqueStates}
+      />
       <div className="contractor-list">
         {loading ? (
           <p>Loading contractors...</p>

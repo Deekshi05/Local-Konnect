@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../../api.js'; // Adjust if needed
-import './LoginCustomer.css';   // Optional styling
+import api from '../../api.js';
+import './LoginCustomer.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginCustomer() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -15,19 +16,17 @@ function LoginCustomer() {
     try {
       const response = await api.post('/api/login/', {
         email,
-        password
+        password,
       });
 
-      // Save tokens to localStorage or sessionStorage
       localStorage.setItem('access', response.data.access);
       localStorage.setItem('refresh', response.data.refresh);
 
-      setMessage('Login successful!');
-      navigate('/');  // Redirect to Home page
-
+      toast.success('Login successful!');
+      navigate('/');
     } catch (error) {
       console.error(error);
-      setMessage('Login failed. Please check your credentials.');
+      toast.error('Login failed. Please check your credentials.');
     }
   };
 
@@ -53,8 +52,6 @@ function LoginCustomer() {
 
         <button type="submit">Login</button>
       </form>
-
-      {message && <p className="response-message">{message}</p>}
     </div>
   );
 }

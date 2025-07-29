@@ -1,17 +1,15 @@
-// src/pages/Sidebar.jsx
 import React from "react";
 import "../../../styles/page_styles/contractor_styles/sidebar.css";
-const Sidebar = ({ updatefilters, filter, services }) => {
-  const handleMultiChange = (category, value) => {
-    const updatedCategory = filter[category]?.includes(value)
-      ? filter[category].filter((item) => item !== value)
-      : [...(filter[category] || []), value];
+// import cities from "../../Tendors/cities.js";
 
-    updatefilters({ ...filter, [category]: updatedCategory });
-  };
-
+const Sidebar = ({ updatefilters, filter, services, cities }) => {
   const handleSingleChange = (category, value) => {
     updatefilters({ ...filter, [category]: value });
+  };
+
+  const handleRatingChange = (value) => {
+    // Only allow one selected rating, stored as an array
+    updatefilters({ ...filter, rating: [parseFloat(value)] });
   };
 
   const handleClearAll = () => {
@@ -44,37 +42,36 @@ const Sidebar = ({ updatefilters, filter, services }) => {
         </select>
       </div>
 
-      {/* Region Filter */}
+      {/* Region Filter (City only) */}
       <div className="filter">
-        <h4>Region</h4>
+        <h4>State</h4>
         <select
           value={filter.region || ""}
           onChange={(e) => handleSingleChange("region", e.target.value)}
         >
-          <option value="">-- Select Region --</option>
-          {["Delhi", "Mumbai", "Chennai", "Bangalore", "Kolkata"].map(
-            (region) => (
-              <option key={region} value={region}>
-                {region}
-              </option>
-            )
-          )}
+          <option value="">-- Select State --</option>
+          {(cities || []).map((state) => (
+            <option key={state} value={state}>
+              {state}
+            </option>
+          ))}
         </select>
       </div>
 
-      {/* Rating Filter */}
+      {/* Rating Filter (1★ and above, using float) */}
       <div className="filter">
         <h4>Customer Ratings</h4>
-        {[5, 4, 3, 2, 1].map((rating) => (
-          <label key={rating} className="rating-option">
-            <input
-              type="checkbox"
-              checked={filter.rating?.includes(rating) || false}
-              onChange={() => handleMultiChange("rating", rating)}
-            />
-            <h3>{rating}★ & above</h3>
-          </label>
-        ))}
+        <select
+          value={filter.rating?.[0] || ""}
+          onChange={(e) => handleRatingChange(e.target.value)}
+        >
+          <option value="">Select Rating</option>
+          {[5, 4, 3, 2, 1].map((rating) => (
+            <option key={rating} value={rating}>
+              {rating}★ & above
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* Experience Filter */}

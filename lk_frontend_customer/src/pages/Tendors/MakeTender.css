@@ -94,3 +94,17 @@ button.add-btn {
     font-size: 0.9em;
     margin-bottom: 10px;
 }
+.requirement-scroll-area {
+  max-height: 228px; 
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.contractor-select.disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+  pointer-events: none;
+}
