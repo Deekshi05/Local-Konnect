@@ -5,10 +5,8 @@ import { ACCESS_TOKEN } from '../constants';
 import api from '../api';
 
 const ContractorProfile = () => {
-
   const navigate = useNavigate();
 
-  // const [availability, setAvailability] = useState(true);
   const [contractor, setContractor] = useState({
     first_name: '',
     last_name: '',
@@ -23,49 +21,142 @@ const ContractorProfile = () => {
     }
   });
 
-  const handleHome = () => {
-    navigate("/home");
+  const [services, setServices] = useState([]);
+  const [myServices, setMyServices] = useState([]);
+  const [newService, setNewService] = useState('');
+
+  const [confirmDialog, setConfirmDialog] = useState({
+    message: '',
+    onConfirm: null,
+    onCancel: null
+  });
+
+  const token = localStorage.getItem(ACCESS_TOKEN);
+
+  // Handle scroll lock when dialog is open
+  useEffect(() => {
+    if (confirmDialog.message) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+  }, [confirmDialog]);
+
+  const fetchContractorData = async () => {
+    try {
+      const res = await api.get("http://localhost:8000/api/profile/", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = res.data;
+      setContractor({
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        phone_number: data.phone,
+        profile_data: {
+          address: data.profile_data?.address,
+          city: data.profile_data?.city,
+          state: data.profile_data?.state,
+          experience: data.profile_data?.experience,
+          rating: data.profile_data?.rating,
+        },
+      });
+    } catch (error) {
+      console.error('Error fetching contractor data:', error);
+    }
+  };
+
+  const fetchMyServices = async () => {
+    try {
+      const res = await api.get("http://localhost:8000/api/contractor/services/", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setMyServices(res.data.map(item => item.service));
+    } catch (error) {
+      console.error('Error fetching contractor services:', error);
+    }
+  };
+
+  const fetchAllServices = async () => {
+    try {
+      const res = await api.get("http://localhost:8000/api/services/", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setServices(res.data);
+    } catch (error) {
+      console.error('Error fetching all services:', error);
+    }
   };
 
   useEffect(() => {
-    // Fetch logged-in contractor details
-    const fetchContractorData = async () => {
-      try {
-        const token = localStorage.getItem(ACCESS_TOKEN);
-        const res = await api.get("api/profile/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = (res.data);
-
-        setContractor({
-          first_name: data.first_name,
-          last_name: data.last_name,
-          email: data.email,
-          phone_number: data.phone_number,
-          profile_data: {
-            address: data.profile_data?.address,
-            city: data.profile_data?.city,
-            state: data.profile_data?.state,
-            experience: data.profile_data?.experience,
-            rating: data.profile_data?.rating,
-          },
-        });
-
-        // setAvailability(data.availability);
-      } catch (error) {
-        console.error('Error fetching contractor data:', error);
-      }
-    };
-
     fetchContractorData();
+    fetchMyServices();
+    fetchAllServices();
   }, []);
+
+  const showConfirmation = (message, onConfirm, onCancel = null) => {
+    setConfirmDialog({ message, onConfirm, onCancel });
+  };
+
+  const handleDialogOk = () => {
+    if (confirmDialog.onConfirm) confirmDialog.onConfirm();
+    setConfirmDialog({ message: '', onConfirm: null, onCancel: null });
+  };
+
+  const handleDialogCancel = () => {
+    if (confirmDialog.onCancel) confirmDialog.onCancel();
+    setConfirmDialog({ message: '', onConfirm: null, onCancel: null });
+  };
+
+  const handleAddService = () => {
+    if (!newService) return;
+    showConfirmation(
+      "Are you sure you want to add this service?",
+      async () => {
+        try {
+          await api.post("http://localhost:8000/api/contractor/services/add/", {
+            service_id: parseInt(newService)
+          }, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          setNewService('');
+          fetchMyServices();
+        } catch (error) {
+          console.error('Error adding service:', error);
+        }
+      },
+      () => {
+        console.log("Add service cancelled");
+      }
+    );
+  };
+
+  const handleRemoveService = (serviceId) => {
+    showConfirmation(
+      "Are you sure you want to remove this service?",
+      async () => {
+        try {
+          await api.delete(`http://localhost:8000/api/contractor/services/${serviceId}/remove/`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          fetchMyServices();
+        } catch (error) {
+          console.error('Error removing service:', error);
+        }
+      },
+      () => {
+        console.log("Remove service cancelled");
+      }
+    );
+  };
+
+  const availableServicesToAdd = services.filter(
+    (service) => !myServices.find((s) => s.id === service.id)
+  );
 
   return (
     <div className="contractor-wrapper">
-
-      <button onClick={handleHome} className='home-button'>Home</button>
+      <button onClick={() => navigate("/home")} className='home-button'>Home</button>
 
       <div className="avatar-container">
         <img
@@ -77,75 +168,65 @@ const ContractorProfile = () => {
 
       <h2>Profile</h2>
 
-      {/* <div className="form-group availability-row">
-        <span className="availability-label">My Availability</span>
-        <label className="switch">
-          <input
-            type="checkbox"
-            checked={availability}
-            onChange={() => setAvailability(!availability)}
-          />
-          <span className="slider"></span>
-        </label>
-      </div> */}
+      {['first_name', 'last_name', 'email', 'phone_number'].map((field, idx) => (
+        <div className="form-group" key={idx}>
+          <label>{field.replace('_', ' ').toUpperCase()}</label>
+          <input type="text" value={contractor[field] || ''} readOnly />
+        </div>
+      ))}
+      {['address', 'city', 'state', 'experience', 'rating'].map((field, idx) => (
+        <div className="form-group" key={idx}>
+          <label>{field.toUpperCase()}</label>
+          <input type="text" value={contractor.profile_data?.[field] || ''} readOnly />
+        </div>
+      ))}
 
       <div className="form-group">
-        <label>First Name</label>
-        <input type="text" value={contractor.first_name || ''} readOnly />
+        <h3>My Services</h3>
+        {myServices.length === 0 ? (
+          <p>No services added yet.</p>
+        ) : (
+          <ul className="service-list">
+            {myServices.map(service => (
+              <li key={service.id} className="service-item">
+                {service.name}
+                <button
+                  className="delete-button"
+                  onClick={() => handleRemoveService(service.id)}
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div className="form-group">
-        <label>Last Name</label>
-        <input type="text" value={contractor.last_name || ''} readOnly />
-      </div>
-
-      <div className="form-group">
-        <label>Email</label>
-        <input type="text" value={contractor.email || ''} readOnly />
-      </div>
-
-      <div className="form-group">
-        <label>Phone Number</label>
-        <input type="text" value={contractor.phone_number || ''} readOnly />
-      </div>
-
-      <div className="form-group">
-        <label>Address</label>
-        <input type="text" value={contractor.profile_data?.address || ''} readOnly />
-      </div>
-
-      <div className="form-group">
-        <label>City</label>
-        <input type="text" value={contractor.profile_data?.city || ''} readOnly />
-      </div>
-
-      <div className="form-group">
-        <label>State</label>
-        <input type="text" value={contractor.profile_data?.state || ''} readOnly />
-      </div>
-
-      <div className="form-group">
-        <label>Experience</label>
-        <input type="text" value={contractor.profile_data?.experience} readOnly />
-      </div>
-
-      <div className="form-group">
-        <label>Rating</label>
-        <input type="text" value={contractor.profile_data?.rating} readOnly />
-      </div>
-      {/* 
-      <div className="form-group">
-        <label>Title</label>
-        <select value={contractor.title} >
-          <option value="">Choose a title</option>
-          <option value="Painter">Painter</option>
-          <option value="Carpenter">Carpenter</option>
-          <option value="Electrician">Electrician</option>
+        <h4>Add New Service</h4>
+        <select value={newService} onChange={e => setNewService(e.target.value)}>
+          <option value="">-- Select a service --</option>
+          {availableServicesToAdd.map(service => (
+            <option key={service.id} value={service.id}>{service.name}</option>
+          ))}
         </select>
-      </div> */}
+        <button onClick={handleAddService} disabled={!newService}>
+          Add Service
+        </button>
+      </div>
 
-
-
+      {/* Confirmation Modal */}
+      {confirmDialog.message && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <p>{confirmDialog.message}</p>
+            <div className="modal-buttons">
+              <button className="ok-button" onClick={handleDialogOk}>OK</button>
+              <button className="cancel-button" onClick={handleDialogCancel}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

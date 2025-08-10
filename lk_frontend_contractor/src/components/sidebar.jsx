@@ -34,6 +34,10 @@ function Sidebar() {
         navigate("/ongoingTendersContractor");
     }
 
+    const quickJobsClick = () => {
+        navigate("/quickJobsContractor");
+    }
+
     return(
         <div className="sidebar">
             <div className="logo-section">
@@ -45,6 +49,7 @@ function Sidebar() {
             <button onClick={allottedClick}>Upcoming Tenders</button>
             <button onClick={ongoingClick}>Ongoing Tenders</button>
             <button onClick={completedClick}>Completed Tenders</button>
+            <button onClick={quickJobsClick}>Quick Jobs</button>
             <button onClick={profileClick}>My Profile</button>
         </div>
     );

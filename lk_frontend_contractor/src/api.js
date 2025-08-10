@@ -2,7 +2,7 @@ import axios from "axios"
 import { ACCESS_TOKEN } from "./constants" 
 
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL
+    baseURL: "http://localhost:8000/api"
 })
 
 api.interceptors.request.use(
@@ -17,5 +17,21 @@ api.interceptors.request.use(
         return Promise.reject(error)
     }
 )
+
+// Add response interceptor to handle errors
+api.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    (error) => {
+        console.error('API Error:', error.response?.data || error.message);
+        if (error.response?.status === 401) {
+            // Handle unauthorized access
+            localStorage.removeItem(ACCESS_TOKEN);
+            window.location.href = '/login';
+        }
+        return Promise.reject(error);
+    }
+);
 
 export default api
