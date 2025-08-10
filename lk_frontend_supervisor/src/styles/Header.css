@@ -1,0 +1,65 @@
+/* Header Styles */
+.header {
+  background: var(--lk-bg-secondary);
+  border-bottom: 1px solid var(--lk-border);
+  padding: var(--lk-spacing-md) var(--lk-spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--lk-shadow-sm);
+}
+
+.header-title {
+  color: var(--lk-text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--lk-spacing);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--lk-spacing-sm);
+  color: var(--lk-text-secondary);
+  font-size: 0.875rem;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: var(--lk-spacing);
+  }
+  
+  .header-title {
+    font-size: 1.25rem;
+  }
+  
+  .user-info {
+    font-size: 0.75rem;
+  }
+  
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+}
