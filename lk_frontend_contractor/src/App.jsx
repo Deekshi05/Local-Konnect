@@ -1,19 +1,19 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
-import ContractorRegister from "./pages/ContractorRegister"
+// import ContractorRegister from "./pages/ContractorRegister"
 import NotFound from "./pages/NotFound"
 import Home from "./pages/Home"
 import ProtectedRoute from "./components/ProtectedRoute"
 import ACard from "./pages/new_tender_card"
 import ContractorProfile from "./pages/contractorProfile"
-import ForgotPassword from "./pages/Forgot"
 import NewTenders from "./pages/newTendersContractor"
 import AppliedTenders from "./pages/appliedTendersContractor"
 import AllottedTenders from "./pages/allottedTendersContractor"
 import CompletedTenders from "./pages/completedTendersContractor"
 import OngoingTenders from "./pages/ongoingTendersContractor"
 import TenderBidForm from "./pages/tenderBidForm"
+import QuickJobsContractor from "./pages/QuickJobsContractor"
 
 function Logout() {
   localStorage.clear()
@@ -40,8 +40,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
-        <Route path="/Forgot" element={<ForgotPassword />} />
-        <Route path="/ContractorRegister" element={<ContractorRegister/>}/>
         <Route
           path="/newTendersContractor"
           element={
@@ -103,6 +101,14 @@ function App() {
           element={
             <ProtectedRoute>
               <TenderBidForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/quickJobsContractor"
+          element={
+            <ProtectedRoute>
+              <QuickJobsContractor />
             </ProtectedRoute>
           }
         />

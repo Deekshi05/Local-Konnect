@@ -3,6 +3,7 @@ import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
+import { jwtDecode } from 'jwt-decode';
 
 function Login() {
 
@@ -33,17 +34,45 @@ function Login() {
 
         try {
             const res = await fetch(url, options);
-
             const data = await res.json();
+            console.log(data);
+
+            if (!data.access) {
+                setError("Invalid credentials");
+                return;
+            }
+
+            // Try to get user info from backend response
+            let userRole = null;
+            if (data.user && data.user.role) {
+                userRole = data.user.role;
+            } else {
+                // Fallback: decode JWT
+                try {
+                    const decoded = jwtDecode(data.access);
+                    userRole = decoded.role || decoded.user_type || null;
+                } catch (err) {
+                    setError("Could not determine user role.");
+                    return;
+                }
+            }
+
+            if (userRole !== "CONTRACTOR") {
+                setError("Access denied. Contractor credentials required.");
+                return;
+            }
 
             localStorage.setItem(ACCESS_TOKEN, data.access);
             localStorage.setItem(REFRESH_TOKEN, data.refresh);
+            if (data.user) {
+                localStorage.setItem('user', JSON.stringify(data.user));
+            }
 
             console.log("Login successful!");
             navigate("/Home");
         } catch (error) {
             console.log("Error Response:", error.response?.data || error.message);
-            alert("Invalid email or password");
+            setError("Invalid email or password");
         }
     };
 
@@ -81,14 +110,14 @@ function Login() {
                                 Register
                             </span>
                         </p>
-                        <p style={{ textAlign: 'center', marginTop: '20px' }}>
+                        {/* <p style={{ textAlign: 'center', marginTop: '20px' }}>
                             <span
                                 style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline' }}
                                 onClick={() => navigate('/Forgot')}
                             >
                                 Forgot Password
                             </span>
-                        </p>
+                        </p> */}
                     </form>
                 </div>
             </div>

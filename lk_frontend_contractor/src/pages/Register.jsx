@@ -55,20 +55,21 @@ export default function Register() {
         };
 
         try {
-            const res = fetch(url, options);
-            if(res.ok) {
-                const data = await res.json();
-                console.log(data);
-            }
-            alert("Contractor Registered Successfully.");
+            const res = await fetch(url, options);
+            const data = await res.json();
 
-            navigate("/ContractorRegister", {
-                state: {email, password}
-            });
-            // navigate("/Login");
+            if (res.ok) {
+                console.log(data);
+                alert("Contractor Registered Successfully.");
+                navigate("/Login");
+            } else {
+                console.error("Server Error:", data); // 🔍 see error from backend
+                alert("Registration failed: " + (data?.detail || JSON.stringify(data)));
+            }
         } catch (error) {
-            alert("Error during registration: " + error);
+            alert("Error during registration: " + error.message);
         }
+
     };
 
     return (

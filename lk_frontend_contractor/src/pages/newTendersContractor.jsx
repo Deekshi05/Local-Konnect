@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ACCESS_TOKEN } from "../constants";
 import Sidebar from '../components/sidebar';
+import { formatDate, formatTimeOnly, formatToIndianTime, isTenderActive } from '../utils/dateUtils';
 import "../styles/new_tender_card.css";
 
 const NewTenders = () => {
@@ -27,13 +28,21 @@ const NewTenders = () => {
                 const res = await fetch(url, options);
                 if (res.ok) {
                     const data = await res.json();
+                    console.log("=== BACKEND RESPONSE for New Tenders /api/tenders/contractor/assigned-with-bid-status/ ===");
+                    console.log("URL:", url);
+                    console.log("Full Response Data:", JSON.stringify(data, null, 2));
+                    console.log("Number of items:", data.length);
+                    
                     const filteredTenders = data.filter(
                         (assignment) =>
-                            assignment.bid_status === 'not_placed' &&
-                            new Date(assignment.end_time) >= new Date()
+                            assignment.bid_status === "not_placed" 
+                            // && assignment.end_time && new Date(assignment.end_time) >= new Date()
                     );
+                    
+                    console.log("Filtered New Tenders (bid_status === 'not_placed'):", JSON.stringify(filteredTenders, null, 2));
                     setTenders(filteredTenders);
                 } else {
+                    console.error("Failed to fetch new tenders. Status:", res.status, "StatusText:", res.statusText);
                     setError("Failed to fetch data");
                 }
             } catch (error) {
@@ -67,8 +76,12 @@ const NewTenders = () => {
             }
 
             const data = await response.json();
-            setSelectedTender(tenderId);
-            setRequirementsData(data);
+            setSelectedTender({
+                id: data.tender_id,
+                title: data.tender_title,
+                service: data.service_name
+            });
+            setRequirementsData(data.requirements);
         } catch (err) {
             console.error("Error:", err.message);
         }
@@ -111,7 +124,7 @@ const NewTenders = () => {
             return;
         }
 
-        const url = `http://localhost:8000/api/tenders/${selectedTender}/submit-bids/`;
+        const url = `http://localhost:8000/api/tenders/${selectedTender.id}/submit-bids/`;
 
         try {
             const response = await fetch(url, {
@@ -126,8 +139,7 @@ const NewTenders = () => {
             if (response.ok) {
                 const result = await response.json();
                 alert("Bids submitted successfully!");
-                console.log(result);
-                handleBack(); // Go back to list after submission
+                handleBack();
             } else {
                 const errorData = await response.json();
                 alert("Error submitting bids: " + JSON.stringify(errorData));
@@ -143,7 +155,7 @@ const NewTenders = () => {
             <Sidebar />
             <div className='main-content'>
                 <div className='dashboard-header'>
-                    <h1>{selectedTender ? `Tender ID: ${selectedTender}` : 'New Tenders'}</h1>
+                    <h1>{selectedTender ? selectedTender.title : 'New Tenders'}</h1>
                     {selectedTender && (
                         <button onClick={handleBack} className="back-button">← Back</button>
                     )}
@@ -163,7 +175,7 @@ const NewTenders = () => {
                                 >
                                     <div className="card-header-1">
                                         <div className="user-id-1">
-                                            <strong>Tender ID:</strong> <span>{assignment.tender_id}</span>
+                                            <strong>Title:</strong> <span>{assignment.title}</span>
                                         </div>
                                         <div className="service-name-1">
                                             <strong>Service:</strong> <span>{assignment.service}</span>
@@ -174,20 +186,28 @@ const NewTenders = () => {
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <th>Location</th>
-                                                    <td>{assignment.location}</td>
-                                                </tr>
-                                                <tr>
                                                     <th>Start Time</th>
-                                                    <td>{new Date(assignment.start_time).toLocaleString()}</td>
+                                                    <td>
+                                                        {formatToIndianTime(assignment.start_time)}
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th>End Time</th>
-                                                    <td>{new Date(assignment.end_time).toLocaleString()}</td>
+                                                    <td>
+                                                        {formatToIndianTime(assignment.end_time)}
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th>Bid Status</th>
                                                     <td>{assignment.bid_status}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Location</th>
+                                                    <td>{assignment.location}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Description</th>
+                                                    <td>{assignment.description}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -200,7 +220,7 @@ const NewTenders = () => {
                     <div className="bid-card-1">
                         <div className="card-header-1">
                             <div className="user-id-1">
-                                <strong>Tender ID:</strong> <span>{selectedTender}</span>
+                                <strong>Service:</strong> <span>{selectedTender.service}</span>
                             </div>
                             <div className="service-name-1">
                                 <strong>Total Requirements:</strong> <span>{requirementsData.length}</span>
@@ -212,7 +232,8 @@ const NewTenders = () => {
                                 <thead>
                                     <tr>
                                         <th>S.No.</th>
-                                        <th>Requirement Name</th>
+                                        <th>Requirement</th>
+                                        <th>Category</th>
                                         <th>Description</th>
                                         <th>Quantity</th>
                                         <th>Unit</th>
@@ -224,6 +245,7 @@ const NewTenders = () => {
                                         <tr key={req.requirement_id}>
                                             <td>{index + 1}</td>
                                             <td>{req.requirement_name}</td>
+                                            <td>{req.category_name}</td>
                                             <td>{req.description}</td>
                                             <td>{req.quantity}</td>
                                             <td>{req.units}</td>
