@@ -7,7 +7,6 @@ import Home from "./pages/Home"
 import ProtectedRoute from "./components/ProtectedRoute"
 import ACard from "./pages/new_tender_card"
 import ContractorProfile from "./pages/contractorProfile"
-import ForgotPassword from "./pages/Forgot"
 import NewTenders from "./pages/newTendersContractor"
 import AppliedTenders from "./pages/appliedTendersContractor"
 import AllottedTenders from "./pages/allottedTendersContractor"
@@ -41,8 +40,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
-        <Route path="/Forgot" element={<ForgotPassword />} />
-        {/* <Route path="/ContractorRegister" element={<ContractorRegister/>}/> */}
         <Route
           path="/newTendersContractor"
           element={
