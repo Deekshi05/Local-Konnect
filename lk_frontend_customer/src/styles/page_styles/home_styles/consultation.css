@@ -1,0 +1,140 @@
+.page-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 40px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.intro {
+  max-width: 500px;
+}
+
+.intro h1 {
+  font-size: 32px;
+  color: rgb(86, 44, 32);
+}
+
+.intro h3 {
+  font-size: 18px;
+  margin-top: 20px;
+  color: rgb(86, 44, 32);
+}
+
+.explore-button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  background-color: rgb(86, 44, 32);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.explore-button:hover {
+  background-color: rgb(110, 55, 40);
+}
+
+.signin-form {
+  background-color: rgb(251, 251, 243);
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.heading h2 {
+  color: rgb(86, 44, 32);
+  margin-bottom: 5px;
+}
+
+.heading h4 {
+  color: rgb(86, 44, 32);
+  margin-bottom: 20px;
+}
+
+.cred {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+
+.input-group.full-width {
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+  color: rgb(86, 44, 32);
+  font-weight: 500;
+}
+
+input,
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+select option {
+  color: black;
+  background-color: white;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: rgb(86, 44, 32);
+}
+
+.row.center {
+  justify-content: center;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  background-color: rgb(86, 44, 32);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: rgb(110, 55, 40);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .signin-form {
+    width: 90%;
+  }
+}

@@ -1,0 +1,308 @@
+.consultations-page {
+  padding: var(--lk-spacing-lg);
+}
+
+.consultations-header {
+  margin-bottom: var(--lk-spacing-xl);
+}
+
+.consultations-header h1 {
+   margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  /* color: #1f2937; */
+  color: transparent;
+  background: linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.filter-section {
+  margin-bottom: var(--lk-spacing-md);
+  padding-bottom: var(--lk-spacing);
+}
+
+.status-filters {
+  display: flex;
+  gap: var(--lk-spacing);
+  margin-bottom: var(--lk-spacing-md);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: var(--lk-spacing-xs) var(--lk-spacing);
+  border: 1px solid var(--lk-border);
+  background: var(--lk-background);
+  color: var(--lk-text-primary);
+  border-radius: var(--lk-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: var(--lk-background-secondary);
+}
+
+.filter-btn.active {
+  background: var(--lk-primary);
+  color: white;
+  border-color: var(--lk-primary);
+}
+
+.consultations-header p {
+  color: var(--lk-text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: var(--lk-spacing-sm);
+  margin-bottom: var(--lk-spacing-lg);
+  border-bottom: 2px solid var(--lk-border);
+}
+
+.tab {
+  padding: var(--lk-spacing) var(--lk-spacing-md);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--lk-text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.tab:hover {
+  color: var(--lk-primary);
+}
+
+.tab.active {
+  color: var(--lk-primary);
+  border-bottom-color: var(--lk-primary);
+}
+
+/* Appointments Section */
+.appointments-section,
+.visits-section {
+  margin-top: var(--lk-spacing-lg);
+}
+
+.appointments-grid,
+.visits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--lk-spacing-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.appointment-card,
+.visit-card {
+  background: var(--lk-background);
+  border: 1px solid var(--lk-border);
+  border-radius: var(--lk-radius);
+  padding: var(--lk-spacing-md);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.appointment-card:hover,
+.visit-card:hover {
+  box-shadow: var(--lk-shadow-md);
+  transform: translateY(-2px);
+}
+
+.appointment-header,
+.visit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--lk-spacing);
+}
+
+.appointment-header h3,
+.visit-header h3 {
+  margin: 0;
+  color: var(--lk-primary);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.appointment-content,
+.visit-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lk-spacing-xs);
+  margin-bottom: var(--lk-spacing);
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--lk-spacing-xs) 0;
+  border-bottom: 1px solid var(--lk-border-light);
+  font-size: 0.9rem;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item .label {
+  font-weight: 500;
+  color: var(--lk-text-secondary);
+}
+
+.detail-item .value {
+  color: var(--lk-text-primary);
+  font-weight: 500;
+}
+
+.appointment-footer,
+.visit-footer {
+  padding: var(--lk-spacing-md);
+  border-top: 1px solid var(--lk-border);
+  background-color: var(--lk-bg-tertiary);
+  display: flex;
+  justify-content: center;
+}
+
+/* No Data */
+.no-data {
+  text-align: center;
+  padding: var(--lk-spacing-xl);
+  color: var(--lk-text-secondary);
+  background: var(--lk-bg-secondary);
+  border-radius: var(--lk-radius-md);
+  border: 2px dashed var(--lk-border);
+}
+
+.no-data p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Modal Styles */
+.appointment-details,
+.visit-details {
+  max-width: 100%;
+}
+
+.notes-section {
+  margin-top: var(--lk-spacing-md);
+  padding-top: var(--lk-spacing-md);
+  border-top: 1px solid var(--lk-border);
+}
+
+.notes-section h4 {
+  color: var(--lk-text-primary);
+  margin-bottom: var(--lk-spacing-sm);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.notes-section p {
+  color: var(--lk-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.action-buttons {
+  margin-top: var(--lk-spacing-md);
+  display: flex;
+  gap: var(--lk-spacing);
+  flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Error Message */
+.error-message {
+  margin-bottom: var(--lk-spacing-md);
+  padding: var(--lk-spacing);
+  border-radius: var(--lk-radius);
+  font-weight: 500;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.1rem;
+  color: var(--lk-text-secondary);
+}
+
+/* Form Help Text */
+.form-help {
+  font-size: 0.875rem;
+  color: var(--lk-text-secondary);
+  margin-top: var(--lk-spacing-sm);
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .consultations-page {
+    padding: var(--lk-spacing);
+  }
+  
+  .appointments-grid,
+  .visits-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tabs {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .tab {
+    text-align: left;
+    border-bottom: 1px solid var(--lk-border);
+    border-radius: 0;
+  }
+  
+  .tab.active {
+    border-bottom-color: var(--lk-primary);
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .action-buttons .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .consultations-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .consultations-header p {
+    font-size: 1rem;
+  }
+  
+  .appointment-header,
+  .visit-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--lk-spacing-sm);
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--lk-spacing-xs);
+  }
+} 

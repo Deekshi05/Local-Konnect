@@ -8,7 +8,7 @@ A full-stack web platform that connects local contractors with users for home im
 
 **Backend:** Django (Django REST Framework)
 
-**Database:** MongoDB
+**Database:** PostgreSQL
 
 **Authentication:** JWT (JSON Web Tokens)
 

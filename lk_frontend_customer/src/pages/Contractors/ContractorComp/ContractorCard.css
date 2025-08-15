@@ -1,0 +1,62 @@
+.contractor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgb(86, 44, 32);
+    border-radius: 8px;
+    background-color: rgb(251, 251, 243);
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(86, 44, 32, 0.15);
+    transition: transform 0.3s ease;
+    height: 320px;
+    width: 220px;
+    justify-content: space-between;
+}
+
+.contractor-card:hover {
+    transform: translateY(-5px);
+}
+
+.contractor-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 2px solid rgb(86, 44, 32);
+}
+
+.contractor-info h4 {
+    margin: 8px 0;
+    color: rgb(86, 44, 32);
+    font-size: 1.1em;
+}
+
+.contractor-info p {
+    margin: 4px 0;
+    color: rgb(86, 44, 32);
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
+
+.contact-btn {
+    background-color: rgb(86, 44, 32);
+    color: rgb(251, 251, 243);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #4c251c;
+}
