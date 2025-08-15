@@ -1,0 +1,99 @@
+from django.urls import path
+from .views import (
+    TenderListView,
+    TenderDetailView,
+    TenderBidCreateView,
+    TenderBidUpdateView,
+    TenderBidDeleteView,
+    ContractorTenderBidListView,
+    TenderBidListForCustomerView,
+    CustomerTendersView,
+    ContractorTenderListView,
+    AssignContractorsToTenderView,
+    TenderCreateView,
+    TenderSelectContractorView,
+    ContractorSelectedTendersView,
+    TenderRequirementCreateView,
+    CustomerTenderAssignmentsView,
+    TenderCancelView,
+    TenderRequirementsListView,
+    ContractorTenderRequirementBidStatusView,
+    SubmitAllTenderBidsView,
+    ContractorTenderListWithBidStatusView,
+    ContractorBidSummaryForTenderView,
+    SupervisorTenderListView,
+    SupervisorServicesListView,
+    VirtualAppointmentCreateView,
+    CustomerVirtualAppointmentsView,
+    SupervisorVirtualAppointmentsView,
+    VirtualAppointmentUpdateView,
+    AssessProjectComplexityView,
+    PhysicalVisitCreateView,
+    DirectPhysicalVisitCreateView,
+    CustomerPhysicalVisitsView,
+    SupervisorPhysicalVisitsView,
+    PhysicalVisitPaymentConfirmView,
+    PhysicalVisitUpdateView,
+    TenderCreationAssistanceCreateView,
+    CustomerTenderAssistanceView,
+    SupervisorTenderAssistanceView,
+    TenderAssistanceDetailView,
+    AssistedTenderCreateView,
+)
+
+urlpatterns = [
+    # Tender Bids
+    path('tender-bids/create/', TenderBidCreateView.as_view(), name='tender-bid-create'),
+    path('tender-bids/<int:pk>/update/', TenderBidUpdateView.as_view(), name='tender-bid-update'),
+    path('tender-bids/<int:pk>/delete/', TenderBidDeleteView.as_view(), name='tender-bid-delete'),
+    path('tender-bids/tender/<int:tender_id>/', ContractorTenderBidListView.as_view(), name='tender-bid-list'),
+    path('customer/tender-bids/<int:tender_id>/', TenderBidListForCustomerView.as_view(), name='customer-tender-bids'),
+    
+    # Tenders
+    path('tenders/customer/', CustomerTendersView.as_view(), name='customer-tenders'),
+    path('tenders/contractor/listed/', ContractorTenderListView.as_view(), name='contractor-tender-list'),
+    path('tenders/contractor/selected/', ContractorSelectedTendersView.as_view(), name='contractor-selected-tenders'),
+    path('tenders/supervisor/', SupervisorTenderListView.as_view(), name='supervisor-tender-list'),
+    path('tenders/assign-contractors/', AssignContractorsToTenderView.as_view(), name='assign-contractors'),
+    path('tenders/create/', TenderCreateView.as_view(), name='tender-create'),
+    path('tenders/<int:pk>/', TenderDetailView.as_view(), name='tender-detail'),
+    path('tenders/<int:tender_id>/select-contractor/', TenderSelectContractorView.as_view(), name='tender-select-contractor'),
+    path('tenders/<int:tender_id>/cancel/', TenderCancelView.as_view(), name='tender-cancel'),
+    path('tenders/<int:tender_id>/requirements/', TenderRequirementsListView.as_view(), name='tender-requirements-list'),
+    path('tenders/<int:tender_id>/requirements/create/', TenderRequirementCreateView.as_view(), name='tender-requirement-create'),
+    path('customer/tender-assignments/', CustomerTenderAssignmentsView.as_view(), name='customer-tender-assignments'),
+    
+    # Contractor tender bid workflow endpoints
+    path('tenders/contractor/assigned-with-bid-status/', ContractorTenderListWithBidStatusView.as_view(), name='contractor-tender-list-with-bid-status'),
+    path('tenders/<int:tender_id>/requirements-with-bids/', ContractorTenderRequirementBidStatusView.as_view(), name='tender-requirements-with-bids'),
+    path('tenders/<int:tender_id>/submit-bids/', SubmitAllTenderBidsView.as_view(), name='tender-submit-bids'),
+    path('tenders/<int:tender_id>/contractor-bid-summary/', ContractorBidSummaryForTenderView.as_view(), name='contractor-bid-summary'),
+    
+    # Supervisor Services
+    path('supervisor/services/', SupervisorServicesListView.as_view(), name='supervisor-services-list'),
+    
+    # Virtual Appointments
+    path('appointments/virtual/create/', VirtualAppointmentCreateView.as_view(), name='virtual-appointment-create'),
+    path('appointments/virtual/customer/', CustomerVirtualAppointmentsView.as_view(), name='customer-virtual-appointments'),
+    path('appointments/virtual/supervisor/', SupervisorVirtualAppointmentsView.as_view(), name='supervisor-virtual-appointments'),
+    path('appointments/virtual/<int:pk>/update/', VirtualAppointmentUpdateView.as_view(), name='virtual-appointment-update'),
+    path('appointments/virtual/<int:pk>/assess-complexity/', AssessProjectComplexityView.as_view(), name='assess-project-complexity'),
+    
+    # Physical Visits
+    path('visits/physical/create/', DirectPhysicalVisitCreateView.as_view(), name='physical-visit-create'),
+    path('visits/physical/create-after-virtual/', PhysicalVisitCreateView.as_view(), name='physical-visit-create-after-virtual'),
+    path('visits/physical/customer/', CustomerPhysicalVisitsView.as_view(), name='customer-physical-visits'),
+    path('visits/physical/supervisor/', SupervisorPhysicalVisitsView.as_view(), name='supervisor-physical-visits'),
+    path('visits/physical/<int:visit_id>/payment/confirm/', PhysicalVisitPaymentConfirmView.as_view(), name='physical-visit-payment-confirm'),
+    path('visits/physical/<int:pk>/update/', PhysicalVisitUpdateView.as_view(), name='physical-visit-update'),
+    
+    # Tender Creation Assistance
+    path('tender-assistance/create/', TenderCreationAssistanceCreateView.as_view(), name='tender-assistance-create'),
+    path('tender-assistance/<int:pk>/', TenderAssistanceDetailView.as_view(), name='tender-assistance-detail'),
+    path('tender-assistance/customer/', CustomerTenderAssistanceView.as_view(), name='customer-tender-assistance'),
+    path('tender-assistance/supervisor/', SupervisorTenderAssistanceView.as_view(), name='supervisor-tender-assistance'),
+    path('tenders/assisted/create/', AssistedTenderCreateView.as_view(), name='assisted-tender-create'),
+
+    # Alias for tender list view
+    path('tenders/', TenderListView.as_view(), name='tender-list-alias'),
+]

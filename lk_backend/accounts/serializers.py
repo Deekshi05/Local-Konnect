@@ -117,6 +117,15 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         data = super().validate(attrs)
         data["email"] = user.email
+        data["user"] = {
+            "id": user.id,
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "phone_number": user.phone_number,
+            "role": user.role
+        }
+        
         return data
 
 
@@ -126,14 +135,14 @@ class CustomerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Customer
-        fields = ['user', 'city', 'state', 'customer_image']
+        fields = ['user', 'city', 'state', 'address', 'customer_image']
 
 class ContractorSerializer(serializers.ModelSerializer):
     user = UserBaseSerializer()
 
     class Meta:
         model = Contractor
-        fields = ['user', 'city', 'state', 'contractor_image', 'rating', 'experience', 'address']
+        fields = ['id', 'user', 'city', 'state', 'contractor_image', 'rating', 'experience', 'address']
 
 class SupervisorSerializer(serializers.ModelSerializer):
     user = UserBaseSerializer()
@@ -145,16 +154,34 @@ class SupervisorSerializer(serializers.ModelSerializer):
 
 class UserProfileSerializer(serializers.ModelSerializer):
     profile_data = serializers.SerializerMethodField()
+    address = serializers.SerializerMethodField()
+    phone = serializers.CharField(source='phone_number', required=False)
 
     class Meta:
         model = User
-        fields = ['id', 'email', 'first_name', 'last_name', 'phone_number', 'role', 'profile_data']
+        fields = ['id', 'email', 'first_name', 'last_name', 'phone', 'role', 'profile_data', 'address']
+        read_only_fields = ['email', 'role']
 
     def get_profile_data(self, obj):
-        if obj.role == User.Roles.CUSTOMER and hasattr(obj, 'customer'):
-            return CustomerSerializer(obj.customer).data
-        elif obj.role == User.Roles.CONTRACTOR and hasattr(obj, 'contractor'):
-            return ContractorSerializer(obj.contractor).data
-        elif obj.role == User.Roles.SUPERVISOR and hasattr(obj, 'supervisor'):
-            return SupervisorSerializer(obj.supervisor).data
+        try:
+            if obj.role == User.Roles.CUSTOMER and hasattr(obj, 'customer'):
+                return CustomerSerializer(obj.customer).data
+            elif obj.role == User.Roles.CONTRACTOR and hasattr(obj, 'contractor'):
+                return ContractorSerializer(obj.contractor).data
+            elif obj.role == User.Roles.SUPERVISOR and hasattr(obj, 'supervisor'):
+                return SupervisorSerializer(obj.supervisor).data
+        except Exception as e:
+            print(f"Error in get_profile_data: {str(e)}")
+        return None
+
+    def get_address(self, obj):
+        try:
+            if hasattr(obj, 'customer'):
+                return getattr(obj.customer, 'address', None)
+            elif hasattr(obj, 'contractor'):
+                return getattr(obj.contractor, 'address', None)
+            elif hasattr(obj, 'supervisor'):
+                return getattr(obj.supervisor, 'address', None)
+        except Exception as e:
+            print(f"Error in get_address: {str(e)}")
         return None

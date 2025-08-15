@@ -7,9 +7,21 @@ class ServicesSerializer(serializers.ModelSerializer):
         model = Services
         fields = '__all__'
 
-class RequirmentsSerializer(serializers.ModelSerializer):
+class RequirementCategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Requirments
+        model = RequirementCategory
+        fields = '__all__'
+
+class RequirementsSerializer(serializers.ModelSerializer):
+    category = RequirementCategorySerializer(read_only=True)
+    category_id = serializers.PrimaryKeyRelatedField(
+        queryset=RequirementCategory.objects.all(),
+        source='category',
+        write_only=True
+    )
+
+    class Meta:
+        model = Requirements
         fields = '__all__'
 
 #---------------------------------------------------------------------------------------------------------------------------
@@ -31,7 +43,9 @@ class ContractorServicesListSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'  
+        fields = ['id', 'first_name', 'last_name', 'email', 'phone_number']
+ # Add only what is used in frontend
+
 
 class ContractorFullSerializer(serializers.ModelSerializer):
     user = UserSerializer()
@@ -48,9 +62,18 @@ class ServicesContractorSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'image', 'contractors']
 
     def get_contractors(self, service):
-        contractor_links = ContractorServices.objects.filter(service=service)
-        contractors = [link.contractor for link in contractor_links]
-        return ContractorFullSerializer(contractors, many=True).data
+        contractor_links = ContractorServices.objects.filter(service=service).select_related('contractor', 'contractor__user')
+        valid_contractors = []
+
+        for link in contractor_links:
+            contractor = link.contractor
+            if contractor and contractor.user:  # extra safeguard
+                valid_contractors.append(contractor)
+
+        return ContractorFullSerializer(valid_contractors, many=True).data
+
+
+
 #---------------------------------------------------------------------------------------------------------------------------
 class ContractorServicesCreateSerializer(serializers.ModelSerializer):
     service_id = serializers.PrimaryKeyRelatedField(queryset=Services.objects.all(), source='service')
