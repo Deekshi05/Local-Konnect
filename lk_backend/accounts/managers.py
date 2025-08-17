@@ -16,22 +16,23 @@ class UserManager(BaseUserManager):
             role=role,
             phone_number=phone_number,
             first_name=first_name,
-            last_name=last_name,
-            **extra_fields
+            last_name=last_name
         )
         user.set_password(password)
         user.save(using=self._db)  
         return user
 
     # Create superuser
-    def create_superuser(self, email, password=None, first_name='', last_name='', **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-        return self.create_user(
+    def create_superuser(self, email, password=None, first_name='', last_name='', phone_number=None):
+        user = self.create_user(
             email,
-            password,
+            password=password,
             role='ADMIN',
             first_name=first_name,
             last_name=last_name,
-            **extra_fields
+            phone_number=phone_number
         )
+        user.is_superuser = True
+        user.is_staff = True
+        user.save(using=self._db)
+        return user
