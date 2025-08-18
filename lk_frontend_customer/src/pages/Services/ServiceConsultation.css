@@ -1,0 +1,349 @@
+/* CSS for Service Consultation */
+.service-consultation {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+.consultation-header {
+    margin-bottom: 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #1f3b8c 0%, #1f3b8c 100%);
+    color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.consultation-header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.consultation-header .service-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-top: 1rem;
+    color: white !important;
+}
+
+.consultation-form {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(31, 59, 140, 0.1);
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.consultation-info {
+    background: linear-gradient(135deg, #1f3b8c, #4a90e2);
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* Supervisor Selection Styling */
+.supervisors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.supervisor-card {
+    background: #ffffff;
+    border: 2px solid #e1e8ed;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.supervisor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #1f3b8c 0%, #1f3b8c 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.supervisor-card:hover::before {
+    transform: scaleX(1);
+}
+
+.supervisor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: #1f3b8c;
+}
+
+.supervisor-card.selected {
+    border-color: #1f3b8c;
+    background: linear-gradient(135deg, rgba(31, 59, 140, 0.05) 0%, rgba(55, 120, 231, 0.05) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(31, 59, 140, 0.15);
+}
+
+.supervisor-card.selected::before {
+    transform: scaleX(1);
+}
+
+.supervisor-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 3px solid #1f3b8c;
+    box-shadow: 0 4px 12px rgba(31, 59, 140, 0.2);
+}
+
+.supervisor-card h3 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.supervisor-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, rgba(31, 59, 140, 0.05) 0%, rgba(55, 120, 231, 0.05) 100%);
+    border-radius: 10px;
+    border-left: 4px solid #1f3b8c;
+}
+
+.info-key {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-value {
+    font-weight: 700;
+    color: #1f3b8c;
+    font-size: 1rem;
+}
+
+.info-value.rating {
+    color: #f39c12;
+}
+
+.info-value.price {
+    background: linear-gradient(135deg, #1f3b8c 0%, #1f3b8c 100%);
+    color: #ffffff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.info-row.specialization {
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.1) 0%, rgba(52, 73, 94, 0.1) 100%);
+    border-left-color: #2c3e50;
+}
+
+.info-row.specialization .info-value {
+    color: #2c3e50;
+}
+
+/* Remove old paragraph styles */
+.supervisor-card p {
+    display: none;
+}
+
+/* Form Inputs */
+select, input, textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #ffffff;
+}
+
+select:focus, input:focus, textarea:focus {
+    outline: none;
+    border-color: #1f3b8c;
+    box-shadow: 0 0 0 3px rgba(31, 59, 140, 0.1);
+}
+
+/* Info Box */
+.info-box {
+    background: linear-gradient(135deg, rgba(31, 59, 140, 0.1) 0%, rgba(55, 120, 231, 0.1) 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    border-left: 4px solid #1f3b8c;
+}
+
+.info-box i {
+    color: #1f3b8c;
+    font-size: 1.3rem;
+    margin-top: 0.2rem;
+}
+
+.info-box p {
+    color: #2d3748;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Submit Button */
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1f3b8c 0%, #1f3b8c 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submit-button:hover::before {
+    left: 100%;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(31, 59, 140, 0.3);
+}
+
+.submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading Container */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-consultation {
+        padding: 1rem;
+    }
+
+    .consultation-header {
+        padding: 1.5rem;
+    }
+
+    .consultation-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .consultation-form {
+        padding: 1.5rem;
+    }
+
+    .supervisors-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .supervisor-card {
+        padding: 1.5rem;
+        min-height: 240px;
+    }
+
+    .supervisor-card img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .supervisor-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .form-group label {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-consultation {
+        padding: 0.5rem;
+    }
+
+    .consultation-header {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .consultation-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .consultation-form {
+        padding: 1rem;
+    }
+}

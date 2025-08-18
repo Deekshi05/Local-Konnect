@@ -1,0 +1,526 @@
+.create-tender {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Form Section Styling */
+.form-section {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    color: #4299e1;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.create-tender h1 {
+    color: #4299e1;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.tender-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.form-group select,
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+}
+
+.supervisor-section,
+.contractors-section,
+.requirements-section {
+    border-top: 1px solid #ecf0f1;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.supervisor-details-info {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
+}
+
+.supervisor-details-info small {
+    display: block;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.supervisor-card,
+.contractor-card {
+    background: #f8f9fa;
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.supervisor-card input[type="radio"],
+.contractor-card input[type="checkbox"] {
+    margin: 0;
+}
+
+.supervisor-info,
+.contractor-info {
+    flex: 1;
+}
+
+.supervisor-name,
+.contractor-name {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.supervisor-details,
+.contractor-details {
+    font-size: 0.9rem;
+    color: #2c3e50;
+}
+
+.supervisor-list,
+.contractors-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.supervisor-list::-webkit-scrollbar,
+.contractors-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.supervisor-list::-webkit-scrollbar-track,
+.contractors-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.supervisor-list::-webkit-scrollbar-thumb,
+.contractors-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.supervisor-search,
+.contractor-search {
+    margin-bottom: 1rem;
+}
+
+.supervisor-search input,
+.contractor-search input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.supervisor-search input:focus,
+.contractor-search input:focus {
+    outline: none;
+    border-color: #1f3b8c;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+}
+
+.requirements-section {
+    border-top: 1px solid #ecf0f1;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.add-requirement-button {
+    background: #1f3b8c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.requirement-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+}
+
+.requirement-item textarea {
+    flex: 1;
+}
+
+.remove-requirement-button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Contractor Section Improvements */
+.contractors-section {
+    margin: 2rem 0;
+}
+
+.contractors-container {
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: #f8f9fa;
+}
+
+.info-text {
+    color: #2c3e50;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+.loading-contractors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+/* Contractor Filters */
+.contractor-filters {
+    background: white;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ecf0f1;
+}
+
+.contractor-filters h4 {
+    margin: 0 0 1rem 0;
+    color: #1f3b8c;
+    font-size: 1.1rem;
+}
+
+.filters-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: #2c3e50;
+}
+
+.filter-group select {
+    padding: 0.5rem;
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Quick Selection */
+.quick-selection {
+    background: white;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ecf0f1;
+}
+
+.quick-selection h4 {
+    margin: 0 0 1rem 0;
+    color: #1f3b8c;
+    font-size: 1.1rem;
+}
+
+.selection-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.selection-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.select-all {
+    background: #1f3b8c;
+    color: white;
+}
+
+.select-all:hover {
+    background: #2980b9;
+}
+
+.select-top-rated {
+    background: #ffd700;
+    color: #333;
+}
+
+.select-top-rated:hover {
+    background: #ffed4e;
+}
+
+.select-experienced {
+    background: #48bb78;
+    color: white;
+}
+
+.select-experienced:hover {
+    background: #38a169;
+}
+
+.clear-selection {
+    background: #e53e3e;
+    color: white;
+}
+
+.clear-selection:hover {
+    background: #c53030;
+}
+
+.selection-info {
+    font-size: 0.9rem;
+    color: #2c3e50;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Contractors List */
+.contractors-list h4 {
+    margin: 0 0 1rem 0;
+    color: #1f3b8c;
+    font-size: 1.1rem;
+}
+
+.contractors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+.contractor-card {
+    background: white;
+    border: 2px solid #ecf0f1;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.contractor-card:hover {
+    border-color: #1f3b8c;
+    box-shadow: 0 2px 8px rgba(66, 153, 225, 0.15);
+}
+
+.contractor-card.selected {
+    border-color: #1f3b8c;
+    background: #ebf8ff;
+    box-shadow: 0 2px 8px rgba(66, 153, 225, 0.25);
+}
+
+.contractor-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.contractor-header input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.contractor-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    flex: 1;
+}
+
+.contractor-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
+}
+
+.detail-item .label {
+    font-size: 0.9rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.detail-item .value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.detail-item .value.rating {
+    color: #d69e2e;
+}
+
+/* Responsive Design for Contractor Section */
+@media (max-width: 768px) {
+    .contractors-container {
+        padding: 1rem;
+    }
+    
+    .filters-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .selection-buttons {
+        flex-direction: column;
+    }
+    
+    .selection-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .contractors-grid {
+        grid-template-columns: 1fr;
+        max-height: 300px;
+    }
+    
+    .contractor-card {
+        padding: 0.75rem;
+    }
+    
+    .contractor-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: #1f3b8c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 2rem;
+}
+
+.submit-button:hover {
+    background: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .create-tender {
+        padding: 1rem;
+    }
+
+    .tender-form {
+        padding: 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .requirement-item {
+        flex-direction: column;
+    }
+
+    .remove-requirement-button {
+        width: 100%;
+    }
+
+    .supervisor-card,
+    .contractor-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .supervisor-card input[type="radio"],
+    .contractor-card input[type="checkbox"] {
+        align-self: flex-start;
+        margin-top: 0.25rem;
+    }
+}

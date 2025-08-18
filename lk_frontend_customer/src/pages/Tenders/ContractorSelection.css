@@ -1,0 +1,539 @@
+/* Contractor Selection Styles */
+.contractor-selection-container {
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.selection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.header-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.header-subtitle {
+    color: #6b7280;
+    margin: 0.5rem 0 0 0;
+    font-size: 1rem;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #6b7280;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: #4b5563;
+    transform: translateY(-1px);
+}
+
+/* Tender Summary */
+.tender-summary {
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e5e7eb;
+}
+
+.summary-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 1rem 0;
+}
+
+.summary-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.detail-item .label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.detail-item .value {
+    font-size: 1rem;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+/* Loading and Error States */
+.loading-container,
+.error-container,
+.success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e5e7eb;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-container i,
+.success-container i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.error-container i {
+    color: #ef4444;
+}
+
+.success-container i {
+    color: #10b981;
+}
+
+.error-container h3,
+.success-container h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.error-container p,
+.success-container p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    max-width: 400px;
+}
+
+.success-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.action-button.primary {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.action-button.primary:hover {
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+/* No Bids State */
+.no-bids {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 2px dashed #d1d5db;
+    text-align: center;
+}
+
+.no-bids i {
+    font-size: 4rem;
+    color: #d1d5db;
+    margin-bottom: 1rem;
+}
+
+.no-bids h3 {
+    color: #1f2937;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.no-bids p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    max-width: 400px;
+}
+
+/* Bids Grid */
+.bids-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Bid Cards */
+.bid-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.bid-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.bid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.contractor-info {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+}
+
+.contractor-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.contractor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contractor-avatar i {
+    font-size: 1.5rem;
+    color: #6b7280;
+}
+
+.contractor-details h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.25rem 0;
+}
+
+.contractor-contact {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.contractor-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stars {
+    display: flex;
+    gap: 0.125rem;
+}
+
+.stars i {
+    font-size: 0.875rem;
+    color: #d1d5db;
+}
+
+.stars i.filled {
+    color: #fbbf24;
+}
+
+.rating-text {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.bid-amount {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.amount-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.amount-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #059669;
+    display: block;
+}
+
+/* Bid Details */
+.bid-details {
+    margin-bottom: 1.5rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0;
+}
+
+.detail-row .label {
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.detail-row .value {
+    color: #1f2937;
+    font-weight: 600;
+    text-align: right;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bid-breakdown {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    border-left: 4px solid #3b82f6;
+}
+
+.bid-breakdown h5 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.75rem 0;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.item-name {
+    font-size: 0.875rem;
+    color: #4b5563;
+    font-weight: 500;
+    flex: 1;
+}
+
+.item-details {
+    font-size: 0.875rem;
+    color: #1f2937;
+    font-weight: 600;
+    text-align: right;
+    font-family: 'Courier New', monospace;
+}
+
+.bid-notes {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.bid-notes h5 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.5rem 0;
+}
+
+.bid-notes p {
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Bid Actions */
+.bid-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.select-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.select-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.select-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.select-button i.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .bids-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .contractor-selection-container {
+        padding: 1rem;
+    }
+
+    .selection-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .header-content {
+        text-align: center;
+    }
+
+    .summary-details {
+        grid-template-columns: 1fr;
+    }
+
+    .bids-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bid-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .bid-amount {
+        text-align: left;
+    }
+
+    .contractor-info {
+        align-items: center;
+    }
+
+    .detail-row .value {
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contractor-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .contractor-details {
+        align-items: center;
+    }
+
+    .contractor-rating {
+        justify-content: center;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: left;
+        gap: 0.25rem;
+    }
+
+    .detail-row .value {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .select-button {
+        min-width: auto;
+        width: 100%;
+    }
+}

@@ -3,6 +3,7 @@ import api from "../../api.js";
 import { useNavigate, Navigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../constants.js";
 import "./form.css";
+import { toast } from 'react-toastify';
 
 function Form({ route, method }) {
   const [Email, setEmail] = useState("");
@@ -13,6 +14,12 @@ function Form({ route, method }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+  if (!passwordRegex.test(password)) {
+   toast.error('Password must be 8+ characters with a letter and number.');
+    setLoading(false);
+    return;
+  }
     try {
       const res = await api.post(route, { Email, password });
       if (method == "login") {

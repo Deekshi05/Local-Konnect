@@ -1,0 +1,585 @@
+/* My Quick Jobs Page Styles */
+.my-quick-jobs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-header {
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+  color: #2d3748;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #718096;
+  margin: 0;
+}
+
+/* Jobs Tabs */
+.jobs-tabs {
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tab-button {
+  flex: 1;
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #718096;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 8px 8px 0 0;
+}
+
+.tab-button:hover {
+  background-color: #f7fafc;
+  color: #4a5568;
+}
+
+.tab-button.active {
+  color: #4299e1;
+  background-color: #ebf8ff;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #4299e1, #3182ce);
+  border-radius: 2px 2px 0 0;
+}
+
+.empty-view {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.empty-view p {
+  color: #718096;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 1.2rem;
+  color: #718096;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: #718096;
+  font-size: 1rem;
+}
+
+.jobs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Quick Job Card */
+.quick-job-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.quick-job-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.job-header {
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.job-header:hover {
+  background-color: #f7fafc;
+}
+
+.job-title-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.job-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+  flex: 1;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 15px;
+}
+
+.status-badge.open {
+  background-color: #c6f6d5;
+  color: #276749;
+}
+
+.status-badge.assigned {
+  background-color: #bee3f8;
+  color: #2a69ac;
+}
+
+.status-badge.completed {
+  background-color: #d6f5d6;
+  color: #22543d;
+}
+
+.status-badge.cancelled {
+  background-color: #fed7d7;
+  color: #c53030;
+}
+
+.job-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.urgency-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.urgency-low {
+  background-color: #e6fffa;
+  color: #234e52;
+}
+
+.urgency-medium {
+  background-color: #fefcbf;
+  color: #744210;
+}
+
+.urgency-high {
+  background-color: #fed7cc;
+  color: #c05621;
+}
+
+.urgency-urgent {
+  background-color: #fed7d7;
+  color: #c53030;
+}
+
+.interests-count {
+  font-size: 0.9rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.job-details {
+  padding: 20px;
+}
+
+.job-description {
+  color: #4a5568;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.job-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+.info-icon {
+  color: #4299e1;
+  font-size: 0.8rem;
+}
+
+.assigned-contractor {
+  background-color: #ebf8ff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #bee3f8;
+  font-weight: 600;
+}
+
+.assigned-contractor .info-icon {
+  color: #3182ce;
+}
+
+/* Interested Contractors Section */
+.interested-contractors {
+  padding: 20px;
+  border-top: 1px solid #e2e8f0;
+  background-color: #f7fafc;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+
+.contractors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.no-interests {
+  padding: 20px;
+  text-align: center;
+  color: #718096;
+  border-top: 1px solid #e2e8f0;
+  background-color: #f7fafc;
+}
+
+/* Contractor Interest Card */
+.contractor-interest-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.contractor-interest-card:hover {
+  border-color: #4299e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contractor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.contractor-info h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 5px 0;
+}
+
+.contractor-location {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0;
+}
+
+.contractor-stats {
+  display: flex;
+  gap: 15px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.stat-icon {
+  color: #f6ad55;
+  font-size: 0.8rem;
+}
+
+.contractor-message {
+  margin-bottom: 15px;
+  padding: 12px;
+  background-color: #f7fafc;
+  border-radius: 6px;
+  border-left: 4px solid #4299e1;
+}
+
+.contractor-message h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 5px 0;
+}
+
+.contractor-message p {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin: 0;
+  font-style: italic;
+}
+
+.interest-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.proposed-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-label {
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+.price-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #38a169;
+}
+
+.no-price {
+  font-size: 0.9rem;
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.assign-button {
+  background: linear-gradient(135deg, #4299e1, #3182ce);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.assign-button:hover {
+  background: linear-gradient(135deg, #3182ce, #2c5282);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+}
+
+.assign-button:active {
+  transform: translateY(0);
+}
+
+/* Job Actions */
+.job-actions {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.complete-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #38a169, #2f855a);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(56, 161, 105, 0.3);
+}
+
+.complete-button:hover {
+  background: linear-gradient(135deg, #2f855a, #276749);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(56, 161, 105, 0.4);
+}
+
+.complete-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(56, 161, 105, 0.3);
+}
+
+.interest-timestamp {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .my-quick-jobs-container {
+    padding: 15px;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .job-title-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .job-meta {
+    flex-wrap: wrap;
+  }
+  
+  .contractor-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .interest-footer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .job-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Enhanced Proposed Price Styles */
+.price-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price-label {
+  font-size: 0.9rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.price-value.highlighted {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #38a169;
+  background: linear-gradient(135deg, #f0fff4, #c6f6d5);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #9ae6b4;
+  display: inline-block;
+}
+
+.price-note {
+  font-size: 0.75rem;
+  color: #718096;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* Enhanced Assign Button */
+.assign-button {
+  background: linear-gradient(135deg, #4299e1, #3182ce);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.assign-button:hover {
+  background: linear-gradient(135deg, #3182ce, #2c5282);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+}
+
+.assign-button:active {
+  transform: translateY(0);
+}
