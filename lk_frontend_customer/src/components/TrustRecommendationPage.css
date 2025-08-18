@@ -1,0 +1,782 @@
+/* TrustRecommendationPage Independent CSS */
+/* Complete standalone stylesheet without CSS variables */
+
+/* Container & Layout */
+.trust-recommendation-container {
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d3748;
+  line-height: 1.6;
+}
+
+/* Header Section */
+.trust-header {
+  background: linear-gradient(135deg, #1f3b8c 0%, #3778e7 100%);
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(31, 59, 140, 0.2);
+}
+
+.trust-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trust-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Main Content Layout */
+.trust-content {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Loading State */
+.loading-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 2rem;
+}
+
+.loading-state h2 {
+  color: #1f3b8c;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.loading-state p {
+  color: #718096;
+  font-size: 1.1rem;
+}
+
+/* Worked Contractors Section */
+.worked-contractors-section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.section-header {
+  background: linear-gradient(135deg, #1f3b8c 0%, #3778e7 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contractors-count {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #718096;
+}
+
+.empty-state h3 {
+  color: #2d3748;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Contractors List */
+.contractors-list {
+  padding: 0;
+}
+
+.worked-contractor-card {
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.worked-contractor-card:last-child {
+  border-bottom: none;
+}
+
+.worked-contractor-card:hover {
+  background: #f7fafc;
+}
+
+/* Contractor Header */
+.contractor-header {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contractor-info h3.contractor-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1f3b8c;
+  margin: 0 0 0.5rem 0;
+}
+
+.contractor-location {
+  color: #718096;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contractor-stats {
+  display: flex;
+  gap: 1.0-rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: #4a5568;
+  min-height: 75px;
+}
+
+.rating-star {
+  color: #f6ad55;
+}
+
+.trust-score {
+  background: linear-gradient(135deg, #1f3b8c 0%, #3778e7 100%);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Work Summary */
+.work-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.work-count {
+  text-align: center;
+}
+
+.count-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f3b8c;
+  line-height: 1;
+}
+
+.count-label {
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+/* Action Buttons */
+.recommend-button {
+  background: linear-gradient(135deg, #1f3b8c 0%, #3778e7 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.recommend-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(31, 59, 140, 0.3);
+}
+
+.recommended-badge {
+  background: #48bb78;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Expanded Work History */
+.work-history-expanded {
+  background: #f7fafc;
+  padding: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.work-history-title {
+  color: #2d3748;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.work-projects {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.work-project-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #3778e7;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+  flex: 1;
+}
+
+.project-type {
+  background: #e2e8f0;
+  color: #4a5568;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.project-type.tender {
+  background: #bee3f8;
+  color: #2b6cb0;
+}
+
+.project-type.quick_job {
+  background: #c6f6d5;
+  color: #276749;
+}
+
+.project-details p {
+  margin: 0.5rem 0;
+  color: #4a5568;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recommend-for-project-button {
+  background: #3778e7;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+}
+
+.recommend-for-project-button:hover {
+  background: #1f3b8c;
+  transform: translateY(-1px);
+}
+
+/* Recommendations Sidebar */
+.recommendations-sidebar {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.sidebar-title {
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px 12px 0 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recommendations-count {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+.recommendations-list {
+  padding: 1.5rem;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.no-recommendations {
+  text-align: center;
+  color: #718096;
+  font-style: italic;
+  padding: 2rem 0;
+}
+
+.recommendation-item {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1.5rem 0;
+}
+
+.recommendation-item:last-child {
+  border-bottom: none;
+}
+
+.recommendation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.recommendation-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+  flex: 1;
+}
+
+.trust-level-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.trust-level-badge.level-8,
+.trust-level-badge.level-9,
+.trust-level-badge.level-10 {
+  background: #48bb78;
+  color: white;
+}
+
+.trust-level-badge.level-6,
+.trust-level-badge.level-7 {
+  background: #ed8936;
+  color: white;
+}
+
+.trust-level-badge.level-4,
+.trust-level-badge.level-5 {
+  background: #ecc94b;
+  color: #744210;
+}
+
+.trust-level-badge.level-1,
+.trust-level-badge.level-2,
+.trust-level-badge.level-3 {
+  background: #fc8181;
+  color: white;
+}
+
+.recommendation-context,
+.recommendation-comment,
+.recommendation-date {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  color: #4a5568;
+}
+
+.recommendation-comment {
+  font-style: italic;
+  color: #2d3748;
+}
+
+.recommendation-date {
+  color: #718096;
+  font-size: 0.8rem;
+}
+
+/* Modal Styles */
+.recommendation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.recommendation-form {
+  padding: 2rem;
+}
+
+.form-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.form-header h3 {
+  color: #1f3b8c;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.form-context {
+  color: #718096;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1rem;
+}
+
+/* Trust Level Selector */
+.trust-level-selector {
+  background: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+}
+
+.trust-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  outline: none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.trust-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1f3b8c 0%, #3778e7 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(31, 59, 140, 0.3);
+}
+
+.trust-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1f3b8c 0%, #3778e7 100%);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(31, 59, 140, 0.3);
+}
+
+.trust-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trust-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f3b8c;
+}
+
+.trust-text {
+  color: #4a5568;
+  font-weight: 600;
+}
+
+/* Form Inputs */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #3778e7;
+  box-shadow: 0 0 0 3px rgba(55, 120, 231, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-help-text {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #718096;
+  font-style: italic;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.cancel-button {
+  background: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel-button:hover {
+  background: #cbd5e0;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #1f3b8c 0%, #3778e7 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(31, 59, 140, 0.3);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .trust-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .recommendations-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .trust-header {
+    padding: 2rem 1rem;
+  }
+
+  .trust-title {
+    font-size: 2rem;
+  }
+
+  .trust-subtitle {
+    font-size: 1rem;
+  }
+
+  .trust-content {
+    padding: 1rem;
+  }
+
+  .contractor-header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .work-summary {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .contractor-stats {
+    gap: 1rem;
+  }
+
+  .recommendation-modal {
+    padding: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .trust-title {
+    font-size: 1.5rem;
+  }
+
+  .contractor-header {
+    padding: 1.5rem;
+  }
+
+  .work-history-expanded {
+    padding: 1.5rem;
+  }
+
+  .recommendation-form {
+    padding: 1.5rem;
+  }
+
+  .contractor-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .recommendation-modal,
+  .recommend-button,
+  .recommend-for-project-button,
+  .submit-button,
+  .cancel-button {
+    display: none !important;
+  }
+
+  .trust-recommendation-container {
+    background: white;
+  }
+
+  .trust-header {
+    background: #1f3b8c;
+    color: white;
+  }
+}

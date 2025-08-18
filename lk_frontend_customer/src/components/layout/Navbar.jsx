@@ -1,72 +1,155 @@
-import { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';
-import '../../styles/layout_styles/Navbar.css';
+import React, { useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import './Navbar.css';
 
-function Navbar() {
-    const location = useLocation();
+const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('access'));
+    const location = useLocation();
 
-    useEffect(() => {
-        setIsLoggedIn(!!localStorage.getItem('access'));
-    }, [location]);
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     const handleLogout = () => {
-        localStorage.removeItem('access');
-        localStorage.removeItem('refresh');
-        setIsLoggedIn(false);
+        logout();
         navigate('/login');
     };
 
-    return (
-        <div className="navbox">
-            <nav>
-                <ul>
-                    <li>
-                        <NavLink to="/make-tender" className="maketen">Make a Tender</NavLink>
-                    </li>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <NavLink to="/about">About</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/Contractors">Contractors</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/services">Services</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/visualize">Visualizer</NavLink>
-                    </li>
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
 
-                    {!isLoggedIn ? (
+    const isActive = (path) => {
+        if (path === '/') {
+            return location.pathname === '/';
+        }
+        return location.pathname.startsWith(path);
+    };
+
+    const isCustomerPath = location.pathname.startsWith('/customer');
+
+    return (
+        <nav className="navbar">
+            <div className="navbar-container">
+                <Link to={user ? "/customer/dashboard" : "/"} className="navbar-logo">
+                    Local Konnect
+                </Link>
+
+                <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+                    {!user && (
                         <>
-                            <li><NavLink to="/Login">Login</NavLink></li>
-                            <li><NavLink to="/Register">Register</NavLink></li>
-                        </>
-                    ) : (
-                        <>
-                            <li>
-                               <span className="logout-link" onClick={handleLogout}>Logout</span>
-                            </li>
-                            <li>
-                                <NavLink to="/profile" className="profile-icon">
-                                    <FaUserCircle size={24} title="Profile" />
-                                </NavLink>
-                            </li>
+                            <Link 
+                                to="/" 
+                                className={`navbar-link ${isActive('/') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-home"></i> Home
+                            </Link>
+                            <Link 
+                                to="/about" 
+                                className={`navbar-link ${isActive('/about') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-info-circle"></i> About
+                            </Link>
+                            <Link 
+                                to="/services" 
+                                className={`navbar-link ${isActive('/services') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-tools"></i> Services
+                            </Link>
                         </>
                     )}
+                    
+                    {user && (
+                        <div className="navbar-links">
+                            <Link 
+                                to="/customer/dashboard" 
+                                className={`navbar-link ${isActive('/customer/dashboard') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-tachometer-alt"></i> Dashboard
+                            </Link>
+                            <Link 
+                                to="/customer/services" 
+                                className={`navbar-link ${isActive('/customer/services') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-tools"></i> Services
+                            </Link>
+                            <Link 
+                                to="/customer/quick-jobs" 
+                                className={`navbar-link ${isActive('/customer/quick-jobs') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-bolt"></i> Quick Jobs
+                            </Link>
+                            <Link 
+                                to="/customer/my-quick-jobs" 
+                                className={`navbar-link ${isActive('/customer/my-quick-jobs') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-list-check"></i> My Quick Jobs
+                            </Link>
+                            <Link 
+                                to="/customer/trust-network" 
+                                className={`navbar-link ${isActive('/customer/trust-network') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-users"></i> Trust Network
+                            </Link>
+                            <Link 
+                                to="/customer/appointments" 
+                                className={`navbar-link ${isActive('/customer/appointments') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-calendar-alt"></i> Appointments
+                            </Link>
+                            <Link 
+                                to="/customer/tenders" 
+                                className={`navbar-link ${isActive('/customer/tenders') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-file-contract"></i> Tenders
+                            </Link>
+                            <Link 
+                                to="/customer/profile" 
+                                className={`navbar-link ${isActive('/customer/profile') ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                <i className="fas fa-user"></i> Profile
+                            </Link>
+                            <button 
+                                onClick={() => { handleLogout(); closeMenu(); }} 
+                                className="auth-button logout-button"
+                            >
+                                <i className="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </div>
+                    )}
 
-                    <li>
-                        <NavLink to="/mytendors" className="tendors">My Tenders</NavLink>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                    {!user && (
+                        <div className="navbar-auth">
+                            <Link to="/login" className="auth-button login-button" onClick={closeMenu}>
+                                <i className="fas fa-sign-in-alt"></i> Login
+                            </Link>
+                            <Link to="/register" className="auth-button signup-button" onClick={closeMenu}>
+                                <i className="fas fa-user-plus"></i> Sign Up
+                            </Link>
+                        </div>
+                    )}
+                </div>
+
+                <div className="menu-toggle" onClick={toggleMenu}>
+                    {isMenuOpen ? '✕' : '☰'}
+                </div>
+            </div>
+        </nav>
     );
-}
+};
 
 export default Navbar;
