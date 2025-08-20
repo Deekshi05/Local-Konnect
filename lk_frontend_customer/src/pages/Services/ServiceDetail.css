@@ -1,0 +1,133 @@
+.service-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.service-detail-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.service-detail-image {
+    max-width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.booking-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #2d3748;
+}
+
+.supervisors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.supervisor-card {
+    background: #f7fafc;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.supervisor-card.selected {
+    border-color: #4299e1;
+    background: #ebf8ff;
+}
+
+.supervisor-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.supervisor-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.supervisor-card h3 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.supervisor-card p {
+    margin: 0.5rem 0 0;
+    color: #4a5568;
+}
+
+input[type="date"],
+input[type="time"] {
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.book-button {
+    background: #4299e1;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.book-button:hover:not(:disabled) {
+    background: #3182ce;
+}
+
+.book-button:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-detail-container {
+        padding: 1rem;
+    }
+
+    .booking-section {
+        padding: 1rem;
+    }
+
+    .supervisors-grid {
+        grid-template-columns: 1fr;
+    }
+}

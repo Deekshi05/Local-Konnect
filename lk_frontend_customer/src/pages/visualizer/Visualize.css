@@ -1,0 +1,321 @@
+/* Visualizer Page Specific Styles */
+.visualizer-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.visualizer-page .app-header {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #ecf0f1;
+    text-align: center;
+}
+
+.visualizer-page .app-header h1 {
+    color: #fff;
+    margin-bottom: 0.25rem;
+    font-size: 2rem;
+}
+
+.visualizer-page .app-header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+.visualizer-page .app-content {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - 100px);
+}
+
+.visualizer-page .sidebar {
+    width: 240px;
+    background-color: #ffffff;
+    border-right: 2px solid #ecf0f1;
+    padding: 1rem;
+    overflow-y: auto;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.visualizer-page .upload-section {
+    margin-bottom: 1.5rem;
+}
+
+.visualizer-page .upload-section h3 {
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.visualizer-page .file-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.visualizer-page .file-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.visualizer-page .file-input-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #ffffff;
+    border: 2px dashed #3498db;
+    border-radius: 8px;
+    color: #3498db;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.visualizer-page .file-input-button:hover {
+    border-color: #2980b9;
+    background-color: rgba(52, 152, 219, 0.05);
+    color: #2980b9;
+}
+
+.visualizer-page .file-input:disabled+.file-input-button {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.visualizer-page .upload-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    color: #2ecc71;
+    font-size: 0.9rem;
+}
+
+.visualizer-page .upload-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ecf0f1;
+    border-top: 2px solid #2ecc71;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.visualizer-page .upload-info {
+    margin-top: 0.5rem;
+}
+
+.visualizer-page .upload-info small {
+    color: #6c757d;
+    font-size: 0.8rem;
+}
+
+.visualizer-page .models-list h3 {
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.visualizer-page .models-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.visualizer-page .models-header h3 {
+    margin: 0;
+}
+
+.visualizer-page .refresh-button {
+    background: none;
+    border: 1px solid #ecf0f1;
+    color: #2c3e50;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.visualizer-page .refresh-button:hover:not(:disabled) {
+    border-color: #3498db;
+    background-color: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+}
+
+.visualizer-page .refresh-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.visualizer-page .model-item {
+    padding: 0.75rem;
+    background-color: #ffffff;
+    border: 1px solid #ecf0f1;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.visualizer-page .model-item:hover {
+    background-color: rgba(52, 152, 219, 0.05);
+    border-color: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.visualizer-page .model-item.active {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-color: #3498db;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.visualizer-page .model-name {
+    color: #2c3e50;
+    font-weight: 500;
+    flex: 1;
+}
+
+.visualizer-page .delete-button {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.visualizer-page .delete-button:hover {
+    opacity: 1;
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.visualizer-page .main-content {
+    flex: 1;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+}
+
+.visualizer-page .viewer-container {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.visualizer-page .viewer-header {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.visualizer-page .viewer-header h2 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.visualizer-page .viewer-info {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.visualizer-page .no-model {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.visualizer-page .no-model h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.visualizer-page .no-model p {
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.visualizer-page .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.visualizer-page .loading h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+.visualizer-page .error-message {
+    background-color: #e74c3c;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .visualizer-page .app-content {
+        flex-direction: column;
+    }
+
+    .visualizer-page .sidebar {
+        width: 100%;
+        order: 2;
+    }
+
+    .visualizer-page .main-content {
+        order: 1;
+    }
+
+    .visualizer-page .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .visualizer-page .app-header p {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,931 @@
+/* Tenders Page Styles */
+.tenders-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.tenders-header {
+  margin-bottom: 2rem;
+}
+
+.tenders-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  /* color: #1f2937; */
+  color: transparent;
+  background: linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.tenders-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* Loading and Error States */
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16rem;
+}
+
+.loading-text {
+  font-size: 1.125rem;
+  color: #6b7280;
+}
+
+.error-container {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.error-message span {
+  margin-right: 0.5rem;
+  color: #dc2626;
+}
+
+.error-message p {
+  margin: 0;
+  color: #dc2626;
+}
+
+.retry-btn {
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.retry-btn:hover {
+  background: #f9fafb;
+}
+
+/* Filters */
+.tenders-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tenders-filters button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.tenders-filters button:hover {
+  border-color: #9ca3af;
+  background: #f9fafb;
+}
+
+.tenders-filters button.active {
+  background: linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%) ;
+  color: white;
+  border-color: transparent;
+}
+
+/* Badges */
+.status-badges {
+  display: flex;
+  gap: 0.25rem;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.status-badge, .priority-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-draft { background: #f3f4f6; color: #374151; }
+.status-published { background: #dbeafe; color: #1e40af; }
+.status-in-progress { background: #fef3c7; color: #d97706; }
+.status-completed { background: #d1fae5; color: #059669; }
+.status-cancelled { background: #fee2e2; color: #dc2626; }
+
+.priority-high { background: #fee2e2; color: #dc2626; }
+.priority-medium { background: #fef3c7; color: #d97706; }
+.priority-low { background: #d1fae5; color: #059669; }
+
+.critical-badge {
+  background: #dc2626;
+  color: white;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+/* Tenders Grid */
+.tenders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.tender-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+}
+
+.tender-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
+}
+
+.tender-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.tender-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  color: #1f2937;
+  font-weight: 600;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.tender-content {
+  margin-bottom: 1rem;
+}
+
+.tender-description {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tender-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.detail-item .label {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.detail-item .value {
+  color: #1f2937;
+  font-weight: 500;
+  text-align: right;
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.tender-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.view-btn {
+  padding: 0.5rem 1rem;
+  background:  linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.view-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* No Tenders */
+.no-tenders {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #9ca3af;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.no-tenders p {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 48rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.action-buttons button {
+  padding: 0.375rem 0.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-btn {
+  background:  linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%);
+  color: white;
+}
+
+.view-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.edit-btn {
+  background: #f59e0b;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #d97706;
+  transform: translateY(-1px);
+}
+
+.progress-btn {
+  background: #10b981;
+  color: white;
+}
+
+.progress-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.milestones-btn {
+  background: #8b5cf6;
+  color: white;
+}
+
+.milestones-btn:hover {
+  background: #7c3aed;
+  transform: translateY(-1px);
+}
+
+/* Progress Modal Styles */
+.progress-input-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-slider {
+  flex: 1;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+  background: #e5e7eb;
+  outline: none;
+  cursor: pointer;
+}
+
+.progress-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background:  linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%);
+  cursor: pointer;
+}
+
+.progress-slider::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%);
+  cursor: pointer;
+  border: none;
+}
+
+.progress-value {
+  font-weight: 600;
+  color: #1f2937;
+  min-width: 3rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Form Elements */
+.form-section {
+  margin-bottom: 1rem;
+}
+
+.form-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 3rem;
+}
+
+/* Milestone Modal Styles */
+.milestone-modal {
+  max-width: 60rem;
+  max-height: 90vh;
+}
+
+.add-milestone-section {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.add-milestone-section h3 {
+  margin: 0 0 1rem 0;
+  color: #1f2937;
+  font-size: 1.125rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.add-milestone-btn {
+  margin-top: 0.5rem;
+}
+
+.milestones-list h3 {
+  margin: 0 0 1rem 0;
+  color: #1f2937;
+  font-size: 1.125rem;
+}
+
+.no-milestones {
+  color: #6b7280;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+.milestones-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.milestone-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: white;
+  transition: all 0.2s;
+}
+
+.milestone-card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.milestone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.milestone-header h4 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.milestone-status {
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.milestone-status.pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.milestone-status.in_progress {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.milestone-status.completed {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.milestone-status.overdue {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.milestone-description {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.milestone-details {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0.5rem 0;
+}
+
+.milestone-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+/* Modal specific styles */
+.tender-info {
+  margin-bottom: 1.5rem;
+}
+
+.tender-info h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.info-section {
+  margin-bottom: 1.5rem;
+}
+
+.info-section h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #374151;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.description-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.description-section h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.description-section p {
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Requirements */
+.requirements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.requirement-item {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: #f9fafb;
+}
+
+.requirement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.requirement-name {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.requirement-details {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.requirement-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Progress */
+.progress-info {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 0.5rem;
+}
+
+.progress-bar {
+  margin-bottom: 1rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.progress-track {
+  width: 100%;
+  height: 0.5rem;
+  background: #d1d5db;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%);
+  transition: width 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tenders-page {
+    padding: 0.5rem;
+  }
+  
+  .tenders-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tenders-filters {
+    flex-direction: column;
+  }
+  
+  .tenders-filters button {
+    text-align: left;
+  }
+  
+  .tender-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .tender-header h3 {
+    margin-right: 0;
+  }
+  
+  .status-badges {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .modal-content {
+    margin: 0.5rem;
+    max-height: calc(100vh - 1rem);
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .detail-item .value {
+    margin-left: 0;
+    text-align: left;
+  }
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--lk-primary) 0%, var(--lk-primary-light) 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: white;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.btn-secondary:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+/* Status-based styling and restrictions */
+.tender-status-info {
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #dee2e6;
+}
+
+.status-description {
+  display: block;
+  color: #666;
+  font-style: italic;
+  margin-top: 4px;
+  font-size: 0.875rem;
+}
+
+.edit-restriction {
+  display: block;
+  color: #e74c3c;
+  margin-top: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.edit-restriction i {
+  margin-right: 4px;
+}
+
+.btn-view-only,
+.btn-cancelled {
+  background-color: #6c757d;
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.6;
+  padding: 0.375rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.btn-view-only:hover,
+.btn-cancelled:hover {
+  background-color: #6c757d;
+  transform: none;
+}
+
+/* State-specific status badge colors */
+.status-published { 
+  background-color: #007bff;
+  color: white;
+}
+
+.status-bidding { 
+  background-color: #ffc107;
+  color: #000;
+}
+
+.status-contractor-selection { 
+  background-color: #fd7e14;
+  color: white;
+}
+
+.status-in-progress { 
+  background-color: #28a745;
+  color: white;
+}
+
+.status-completed { 
+  background-color: #6c757d;
+  color: white;
+}
+
+.status-cancelled { 
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Enhanced tender footer layout */
+.tender-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.action-buttons button {
+  font-size: 0.8rem;
+  padding: 0.375rem 0.75rem;
+}
+
+/* Status info styling based on tender state */
+.tender-status-info[data-status="published"] {
+  border-left-color: #007bff;
+}
+
+.tender-status-info[data-status="bidding"] {
+  border-left-color: #ffc107;
+}
+
+.tender-status-info[data-status="contractor_selection"] {
+  border-left-color: #fd7e14;
+}
+
+.tender-status-info[data-status="in_progress"] {
+  border-left-color: #28a745;
+}
+
+.tender-status-info[data-status="completed"] {
+  border-left-color: #6c757d;
+}
+
+.tender-status-info[data-status="cancelled"] {
+  border-left-color: #dc3545;
+}
